@@ -1,0 +1,30 @@
+{% extends 'flat/base.html' %}
+{%block content%}
+    {%for competition in competitions%}
+    <a href="top">topへ</a>
+
+    <a href="{% url "social:begin" "twitter" %}">twitterでログイン</a>
+        <div class="heading">
+            <button class="btn" onclick="show_modal_window({{competition.id}})">
+                <p>{{competition.id}}</p>
+                <div class="theme">
+                    <h1>{{competition.theme}}</h1>
+                </div>
+                <div class="participants">
+                    <span class="far fa-hand-paper">{{competition.participate_sum}}</span>
+                </div>
+            </button>
+        </div>
+        <div id="modal_window{{competition.id}}" class="modal_window">
+            <div class="modal_window_wrapper">
+                <h1 id="modal_theme">{{competition.theme}}</h1>
+                <form action="post" method="get">
+                    <textarea name="content"></textarea>
+                    <input type="submit" value="tweetする" class="tweet_btn"> 
+                </form>
+                <input type="button" value="閉じる" class="close_btn" onclick="close_modal_window({{competition.id}})">
+            </div>
+        </div>
+
+    {% endfor %}
+{% endblock %}

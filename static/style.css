@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
+.wrapper{
+    display: flex;
+}
+.navigation{
+    width:25%;
+    height: 100%;
+    border-right: solid 2px gainsboro;
+    position: fixed;
+    box-sizing: border-box;
+}
+main {
+    margin-left: 25%;
+    width:40%;
+    height:1000px;
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+}
+.right-side{
+    width:30%;
+    height:1000px;
+    border-left:solid 2px gainsboro;
+    box-sizing: border-box;
+}
+.command{
+    height:30px;
+    font-size: 25px;
+    margin-top: 30px;
+    margin-left: 100px;
+}
+.command img{
+    width:30px;
+    height:30px;
+    vertical-align: middle;
+}
+.command span{
+    font-size: 30px;
+    font-family: 'Sawarabi Mincho', sans-serif;
+}
+.command a{
+    text-decoration: none;
+    color:black;
+    transition:0.5s;
+}
+.command a:hover{
+    background-color: skyblue;
+    color:white;
+    border-radius: 5%;
+    height:30px;
+}
+.login{
+    height:30px;
+    font-size: 25px;
+    margin-top: 30px;
+    margin-left: 100px;
+}
+.login a{
+    text-decoration: none;
+    color:black;
+    transition:0.5s;
+    background-color:deepskyblue;
+    color:white;
+    border-radius: 5%;
+    padding:5px;
+}
+.heading{
+    width:100%;
+    border-bottom:2px solid gainsboro;
+    box-sizing: border-box;
+    padding-bottom: 15px;
+    position: relative;
+}
+.heading :hover{
+    transition: 0.5s;
+    cursor: pointer;
+    color:white;
+    background-color: #1BB4D3;
+}
+.heading :hover .fa-hand-paper{
+    color:white;
+}
+.theme{
+    padding-top: 25px;
+    width:100%;
+}
+.theme h1{
+    font-size: 40px;
+}
+.participants{
+    width:100%;
+    display:inline-flex;
+    justify-content: space-around;
+}
+.participants span{
+    font-size: 20px;
+    color: darkgray;
+    line-height: 50px;
+}
+.right-side form{
+    position: relative;
+    margin-top: 30px;
+    margin-left: 30px;
+}
+.right-side input{
+    width:200px;
+    height: 30px;
+    position: absolute;
+    left:0;
+    top:0;
+}
+.right-side button{
+    position: absolute;
+    left:175px;
+    top:0;
+    height:35px;
+    width:35px;
+}
+
+.modal_window{
+    width:100%;
+    height: 100%;
+    position: fixed;
+    left:0%;
+    display: none;
+    flex-direction: column;
+    align-items:center;
+    background:rgba(124,124,124,0.8) ;
+    z-index:1;
+    align-content: center;
+    justify-content: center;
+}
+.modal_window_wrapper{
+    display: flex;
+    flex-direction: column;
+    width:30%;
+    height:50%;
+    background-color: white;
+    justify-content: space-around;
+    text-align: center;
+}
+.modal_window textarea{
+    margin: 0 auto;
+    width:70%;
+    height:40%;
+}
+.tweet_btn{
+    margin: 0 auto;
+    width:100px;
+    height:30px;
+    background-color: #2CA7E0;
+    color:white;
+}
+.close_btn{
+    margin: 0 auto;
+    width:100px;
+    height:30px;
+    background-color: snow;
+    margin-bottom: 20px;
+}

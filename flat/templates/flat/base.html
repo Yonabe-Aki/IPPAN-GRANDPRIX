@@ -1,0 +1,61 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/9110abeef8.js" crossorigin="anonymous"></script>
+     <script type="text/javascript" src="{% static 'script.js' %}">
+     </script>
+     <meta name="twitter:card" content="summary_large_image" /> <!--①-->
+    <meta name="twitter:site" content="@dabadabajajaja" /> <!--②-->
+    <meta property="og:url" content="https://saruwakakun.com/html-css/reference/twitter-card" /> <!--③-->
+    <meta property="og:title" content="記事のタイトル" /> <!--④-->
+    <meta property="og:description" content="記事の要約（ディスクリプション）" /> <!--⑤-->
+    <meta property="og:image" content="image.jpg" /> <!--⑥-->
+</head>
+<body>
+    {% block extrahead %}
+      <link href="{% static 'reset.css' %}" rel="stylesheet">
+      <link href="{% static 'style.css' %}" rel="stylesheet">
+    {% endblock %}
+    
+
+    <div class="wrapper">
+        <div class="navigation">
+        <h1>{{user}}<h1>
+        <a href="post">ツイートする</a>
+            <div class="command">
+                <img src="{% static "flat/onigiri.png" %}">    <span>Omusubi</span>
+            
+            </div>
+            <div class="command">
+                <a href="hold"><i class="fas fa-plus"><i class="far">開催</i></i></a>
+            </div>      
+            
+            <div class="command">
+                <a href="/"><i class="far fa-hand-paper">参加</i></a>
+            </div>
+            <div class="command">
+                <a href="acount"><i class="far fa-user-circle">〇〇さん</i></a>
+            </div>
+            
+        </div>
+        <main>
+            {%block content%}
+            {%endblock%}
+        </main>
+        <div class="right-side">
+            
+            <form action="">
+                <input type="text" placeholder="キーワード検索">
+                <button type="submit" id="sbtn2"><i class="fas fa-search"></i></button>
+            </form>
+        </div>   
+    </div>
+</body>
+</html>
+
+    
