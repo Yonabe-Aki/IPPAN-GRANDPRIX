@@ -1,1 +1,10 @@
 {% extends 'flat/base.html' %}
+{%block content%}
+<h1>あああ</h1>
+<form action="create/competition" method="post">
+    {% csrf_token %}
+    <input type="text" name="theme">
+    <button type="submit">送信</button>
+</form>
+{% endblock %}
+

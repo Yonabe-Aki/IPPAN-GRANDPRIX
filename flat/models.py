@@ -22,8 +22,7 @@ class Tag(models.Model):
         return self.name
 class Competition(models.Model):
     theme=models.CharField(max_length=50,default=0)
-    participate_sum=models.IntegerField(default=0)
-    hashtag=models.CharField(max_length=50,default=0)
+    img = models.ImageField(upload_to='', default='defo')
     def __str__(self):
         return self.theme
 class TwitterPost(TemplateView):

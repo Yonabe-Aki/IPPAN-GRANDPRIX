@@ -1,3 +1,4 @@
+
 {%load static%}
 <!DOCTYPE html>
 <html lang="ja">
@@ -11,10 +12,10 @@
      </script>
      <meta name="twitter:card" content="summary_large_image" /> <!--①-->
     <meta name="twitter:site" content="@dabadabajajaja" /> <!--②-->
-    <meta property="og:url" content="https://saruwakakun.com/html-css/reference/twitter-card" /> <!--③-->
-    <meta property="og:title" content="記事のタイトル" /> <!--④-->
-    <meta property="og:description" content="記事の要約（ディスクリプション）" /> <!--⑤-->
-    <meta property="og:image" content="image.jpg" /> <!--⑥-->
+    <meta property="og:url" content="https://omusubi.herokuapp.com/detail/{{competition.id}}" /> <!--③-->
+    <meta property="og:title" content={{competition.theme}} /> <!--④-->
+    <meta property="og:description" content="テーマ" /> <!--⑤-->
+    <meta property="og:image" content="media/img_{{competition.id}}.jpg" /> <!--⑥-->
 </head>
 <body>
     {% block extrahead %}
@@ -24,6 +25,18 @@
     
 
     <div class="wrapper">
+
+        <div id="modal_window{{competition.id}}" class="modal_window">
+            <div class="modal_window_wrapper">
+                <h1 id="modal_theme">{{competition.theme}}</h1>
+                <form action="/post" method="post">
+                    <textarea name="content"></textarea>
+                    <input type="submit" value="tweetする" class="tweet_btn"> 
+                </form>
+                <input type="button" value="閉じる" class="close_btn" onclick="close_modal_window({{competition.id}})">
+            </div>
+        </div>
+
         <div class="navigation">
         <h1>{{user}}<h1>
         <a href="{% url "social:begin" "twitter" %}">twitterでログイン</a>
@@ -39,10 +52,19 @@
             <div class="command">
                 <a href="/"><i class="far fa-hand-paper">参加</i></a>
             </div>
+            
+            
         </div>
         <main>
-            {%block content%}
-            {%endblock%}
+            <div class="theme">
+            <input class="img" type="image" src="{{competition.img.url }}" onclick="show_modal_window({{competition.id}})" >
+
+
+            <div class="participants">
+                <span class="far fa-hand-paper">{{competition.participate_sum}}</span>
+            </div>
+        
+            
         </main>
         <div class="right-side">
             
@@ -52,7 +74,6 @@
             </form>
         </div>   
     </div>
+
 </body>
 </html>
-
-    

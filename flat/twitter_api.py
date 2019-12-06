@@ -1,14 +1,16 @@
 from django.conf import settings
 from social_django.models import UserSocialAuth
 from requests_oauthlib import OAuth1Session
-
 import twitter
 import json
-def post_twitter(user):
+import sys
+sys.path.append("../mysite")
+from mysite import settings
+def post_twitter(user,content):
     social_auth = UserSocialAuth.objects.get(user=user, provider='twitter')
 
-    CK = 'ctGFBxVyAK5hHYmF5weDduyCa'                             # 
-    CS = 'GjRAFSFBjCBvSYOx7cXXwtnpmDYyp8u8GQi0nGIskbPEIO2mBR'         
+    CK = settings.SOCIAL_AUTH_TWITTER_KEY                         
+    CS = settings.SOCIAL_AUTH_TWITTER_SECRET    
     AT = social_auth.extra_data['access_token']['oauth_token']
     AS = social_auth.extra_data['access_token']['oauth_token_secret']
 
@@ -20,12 +22,12 @@ def post_twitter(user):
 
 
     # Media ID を付加してテキストを投稿
-    params = {'status': '画像投稿テスト http://127.0.0.1:8000/'}
+    params = {'status': content}
     req_media = twitter.post(url_text, params = params)
 
     # 再びレスポンスを確認
     if req_media.status_code != 200:
-        print ("テキストアップデート失敗: %s", req_text.text)
-        exit()
+        print(CK)
+        print(CS)
 
     print ("OK")
