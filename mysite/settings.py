@@ -156,15 +156,15 @@ MEDIA_URL = '/media/'
 DEBUG=True
 #テスト環境
 # SECURITY WARNING: keep the secret key used in production secret!
-if DEBUG == True:
-    from .configs import twitter
-    SECRET_KEY = twitter.SECRET_KEY
-    SOCIAL_AUTH_TWITTER_KEY = twitter.SOCIAL_AUTH_TWITTER_KEY
-    SOCIAL_AUTH_TWITTER_SECRET = twitter.SOCIAL_AUTH_TWITTER_SECRET
+# if DEBUG == True:
+#     from .configs import twitter
+#     SECRET_KEY = twitter.SECRET_KEY
+#     SOCIAL_AUTH_TWITTER_KEY = twitter.SOCIAL_AUTH_TWITTER_KEY
+#     SOCIAL_AUTH_TWITTER_SECRET = twitter.SOCIAL_AUTH_TWITTER_SECRET
 
 
 #本番環境
-if DEBUG == False:
+if DEBUG == True:
     try:
         from .local_settings import *
     except ImportError:
