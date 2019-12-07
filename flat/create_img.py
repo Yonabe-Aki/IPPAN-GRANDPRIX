@@ -1,6 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
 def create_img(theme,id):
-    font = ImageFont.truetype("/System/Library/Fonts/ヒラギノ丸ゴ ProN W4.ttc", 27)
+    font = ImageFont.truetype("Comic Sans MS", 27)
 
     img = Image.open("media/frame.jpg")
     W,H=img.size
