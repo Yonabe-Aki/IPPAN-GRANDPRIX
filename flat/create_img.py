@@ -1,6 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
 def create_img(theme,id):
-    font = ImageFont.truetype("/Users/imanishiyuujin/onigiri/flat/ヒラギノ角ゴシック W4.ttc", 27)
+    font = ImageFont.truetype("../ヒラギノ角ゴシック W4.ttc", 27)
 
     img = Image.open("media/frame.jpg")
     W,H=img.size
