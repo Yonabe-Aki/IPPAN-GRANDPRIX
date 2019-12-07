@@ -35,6 +35,9 @@
     border-radius: 5%;
     height:30px;
 }
+.fa-twitter{
+    color:#2CA7E0;
+}
 main {
     margin-left: 25%;
     width:40%;
@@ -118,9 +121,12 @@ main {
     margin: 0 auto;
     width:70%;
     height:40%;
+    margin-bottom:20px;
 }
+
 .tweet_btn{
     margin: 0 auto;
+    display:block;
     width:100px;
     height:30px;
     background-color: #2CA7E0;
