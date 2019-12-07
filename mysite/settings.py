@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
@@ -73,8 +73,8 @@ TEMPLATES = [
         },
     },
 ]
-LOGIN_REDIRECT_URL = "hold"
-LOGIN_URL="login"
+LOGIN_REDIRECT_URL = "/"
+LOGIN_URL="/login/twitter"
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.twitter.TwitterOAuth',
