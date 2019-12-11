@@ -165,7 +165,7 @@ MEDIA_URL = S3_URL
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
-DEBUG=False
+DEBUG=True
 
 
 # テスト環境
