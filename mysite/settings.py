@@ -9,6 +9,9 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+# mode="ローカルテスト"
+mode="テスト"
+# mode="本番"
 
 import os
 import django_heroku
@@ -165,19 +168,16 @@ MEDIA_URL = S3_URL
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 
-DEBUG=True
 
-
-# テスト環境
-if DEBUG == True:
+if mode=="ローカルテスト":
+    DEBUG=True
     from .configs import twitter
     SECRET_KEY = twitter.SECRET_KEY
     SOCIAL_AUTH_TWITTER_KEY = twitter.SOCIAL_AUTH_TWITTER_KEY
     SOCIAL_AUTH_TWITTER_SECRET = twitter.SOCIAL_AUTH_TWITTER_SECRET
 
-
-#本番環境
-if DEBUG == False:
+if mode=="テスト":
+    DEBUG=True
     try:
         from .local_settings import *
     except ImportError:
@@ -188,3 +188,15 @@ if DEBUG == False:
     SECRET_KEY = os.environ["SECRET_KEY"]
     SOCIAL_AUTH_TWITTER_KEY = os.environ["SOCIAL_AUTH_TWITTER_KEY"]
     SOCIAL_AUTH_TWITTER_SECRET = os.environ["SOCIAL_AUTH_TWITTER_SECRET"]
+
+if mode=="本番":
+    DEBUG=False
+
+
+
+
+
+
+    
+
+    
