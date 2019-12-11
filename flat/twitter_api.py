@@ -22,7 +22,7 @@ def post_twitter(user,content,competition_id):
 
 
 
-    params = {'status': content+"https://omusubi.herokuapp.com/detail/"+str(competition_id)}
+    params = {'status': content+"\nhttps://omusubi.herokuapp.com/detail/"+str(competition_id)}
     req_media = twitter.post(url_text, params = params)
 
     
