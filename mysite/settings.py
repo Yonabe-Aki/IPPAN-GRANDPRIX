@@ -154,19 +154,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-DEBUG=True
+DEBUG=False
 
 
-#テスト環境
-# if DEBUG == True:
-#     from .configs import twitter
-#     SECRET_KEY = twitter.SECRET_KEY
-#     SOCIAL_AUTH_TWITTER_KEY = twitter.SOCIAL_AUTH_TWITTER_KEY
-#     SOCIAL_AUTH_TWITTER_SECRET = twitter.SOCIAL_AUTH_TWITTER_SECRET
+テスト環境
+if DEBUG == True:
+    from .configs import twitter
+    SECRET_KEY = twitter.SECRET_KEY
+    SOCIAL_AUTH_TWITTER_KEY = twitter.SOCIAL_AUTH_TWITTER_KEY
+    SOCIAL_AUTH_TWITTER_SECRET = twitter.SOCIAL_AUTH_TWITTER_SECRET
 
 
 #本番環境
-if DEBUG == True:
+if DEBUG == False:
     try:
         from .local_settings import *
     except ImportError:

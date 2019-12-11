@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw, ImageFont
 from mysite import settings
 def create_img(theme,id):
-    if settings.DEBUG==True:
+    if settings.DEBUG==False:
         font = ImageFont.truetype("/app/.font/ipaexm.ttf", 27)
     # if settings.DEBUG==True:
     #     font = ImageFont.truetype(".font/ipaexm.ttf", 27)
