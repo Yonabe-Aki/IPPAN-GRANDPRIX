@@ -9,7 +9,7 @@ app_name="flat"
 urlpatterns=[
     path("hold",views.hold,name="hold"),
     path("",views.participate,name="participate"),
-    path("post",views.post,name="post"),
+    path("post/<int:competition_id>",views.post,name="post"),
     path("detail/<int:competition_id>",views.detail,name="detail"),
     path("create/competition",views.create_competition,name="create_competition")
 ]

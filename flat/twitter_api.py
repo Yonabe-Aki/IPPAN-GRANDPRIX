@@ -6,7 +6,7 @@ import json
 import sys
 sys.path.append("../mysite")
 from mysite import settings
-def post_twitter(user,content):
+def post_twitter(user,content,competition_id):
     social_auth = UserSocialAuth.objects.get(user=user, provider='twitter')
 
     CK = settings.SOCIAL_AUTH_TWITTER_KEY                         
@@ -17,17 +17,12 @@ def post_twitter(user,content):
     url_media = "https://upload.twitter.com/1.1/media/upload.json"
     url_text = "https://api.twitter.com/1.1/statuses/update.json"
     attachment_url="http://127.0.0.1:8000/"
-    # OAuth認証 セッションを開始
+
     twitter = OAuth1Session(CK, CS, AT, AS)
 
 
-    # Media ID を付加してテキストを投稿
-    params = {'status': content}
+
+    params = {'status': content+"https://omusubi.herokuapp.com/detail/"+str(competition_id)}
     req_media = twitter.post(url_text, params = params)
 
-    # 再びレスポンスを確認
-    if req_media.status_code != 200:
-        print(CK)
-        print(CS)
-
-    print ("OK")
+    

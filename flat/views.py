@@ -21,9 +21,9 @@ def participate(request):
 def hold(request):
     return render(request,"flat/hold.html")
 
-def post(request):
+def post(request,competition_id):
     content=request.POST.get("content")
-    twitter_api.post_twitter(request.user,content)
+    twitter_api.post_twitter(request.user,content,competition_id)
     return redirect("/")
 
 def detail(request,competition_id):

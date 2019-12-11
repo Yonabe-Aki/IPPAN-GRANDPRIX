@@ -29,7 +29,7 @@
         <div id="modal_window{{competition.id}}" class="modal_window">
             <div class="modal_window_wrapper">
                 <h1 id="modal_theme">{{competition.theme}}</h1>
-                <form action="/post" method="post">
+                <form action="/post/{{competition.id}}" method="post">
                     {% csrf_token %}
                     <textarea name="content"></textarea>
                     <input type="submit" value="tweetする" class="tweet_btn"> 
