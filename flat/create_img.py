@@ -1,6 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
 def create_img(theme,id):
-    font = ImageFont.truetype("../.font/ipaexm.ttf", 27)
+    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 27)
 
     img = Image.open("media/frame.jpg")
     W,H=img.size
