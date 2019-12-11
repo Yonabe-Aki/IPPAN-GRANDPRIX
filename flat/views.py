@@ -12,7 +12,8 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 def base(request):
     competitions=Competition.objects.all
-    return render(request,"flat/participate.html",{"competitions":competitions})
+    user=request.user
+    return render(request,"flat/participate.html",{"competitions":competitions,"user":user})
 def participate(request):
     user=request.user
     competitions=Competition.objects.all

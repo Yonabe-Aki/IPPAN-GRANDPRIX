@@ -25,8 +25,9 @@
 
     <div class="wrapper">
         <div class="navigation">
-            <h1>{{user}}さん<h1>
-            
+            {%if user.is_authenticated%}
+            <h1>{{request.user}}さん<h1>
+            {%endif%}
 
             <div class="command">
                 <img src="{% static "flat/onigiri.png" %}">    <span>Onigiri</span>
@@ -39,9 +40,17 @@
             <div class="command">
                 <a href="/"><i class="far fa-hand-paper">参加</i></a>
             </div>
+            {%if not user.is_authenticated%}
             <div class="command">
-                <a class="twitter-login" href="{% url "social:begin" "twitter" %}"><i class="fab fa-twitter"></i>ログイン</a>
+                <a class="twitter-login" href="{% url "social:begin" "twitter"%}?force_login=true"><i class="fab fa-twitter"></i>ログイン</a>
             </div>
+            {%endif%}
+            {%if user.is_authenticated%}
+            <div class="command">
+                <a class="twitter-logout" href="logout"><i class="fab fa-twitter"></i>ログアウト</a>
+            </div>
+            {%endif%}
+
             
         </div>
         <main>
