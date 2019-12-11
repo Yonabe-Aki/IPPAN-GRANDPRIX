@@ -157,7 +157,7 @@ MEDIA_URL = '/media/'
 DEBUG=False
 
 
-テスト環境
+# テスト環境
 if DEBUG == True:
     from .configs import twitter
     SECRET_KEY = twitter.SECRET_KEY
