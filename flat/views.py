@@ -22,7 +22,7 @@ def hold(request):
     return render(request,"flat/hold.html")
 
 def post(request):
-    content=request.GET.get("content")
+    content=request.POST.get("content")
     twitter_api.post_twitter(request.user,content)
     return redirect("/")
 
@@ -40,7 +40,7 @@ def create_competition(request):
     create_img.create_img(theme,id)
     new_competition=Competition(theme=theme,img="img_"+str(id)+".jpg")
     new_competition.save()
-    return render(request,"flat/participate.html")
+    return redirect("/")
 
 
 
