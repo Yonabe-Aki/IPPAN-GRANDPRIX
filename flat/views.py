@@ -32,13 +32,11 @@ def detail(request,competition_id):
 
 def create_competition(request):
     theme=request.POST.get("theme")
-    id_tuple=Competition.objects.all().values_list('id', flat=True)
-    if len(id_tuple)==0:
-        id=1
-    if len(id_tuple)!=0:
-        id=id_tuple[len(id_tuple)-1]+1
+    new_competition=Competition(theme=theme)
+    new_competition.save()
+    id=new_competition.id
     create_img.create_img(theme,id)
-    new_competition=Competition(theme=theme,img="img_"+str(id)+".jpg")
+    new_competition.img="img_"+str(id)+".jpg"
     new_competition.save()
     return redirect("/")
 
