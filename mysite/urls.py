@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from django.urls import path,include,url
+from django.urls import path,include
 from flat import views
 from django.contrib.auth import views as auth_views
 
