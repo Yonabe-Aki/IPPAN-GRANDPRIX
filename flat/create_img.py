@@ -1,10 +1,10 @@
 from PIL import Image, ImageDraw, ImageFont
 from mysite import settings
 def create_img(theme,id):
-    if settings.mode=="テスト"or"本番":
+    if settings.mode=="テスト" or settings.mode=="本番":
         font = ImageFont.truetype("/app/.font/ipaexm.ttf", 27)
-    if settings.mode=="ローカルテスト":
-        font = ImageFont.truetype(".font/ipaexm.ttf", 27)
+    if settings.mode=="ローカルテスト" or settings.mode=="ローカルテスト２":
+        font = ImageFont.truetype("/Users/imanishiyuujin/onigiri/.font/ipaexm.ttf", 27)
 
 
     img = Image.open("media/frame.jpg")

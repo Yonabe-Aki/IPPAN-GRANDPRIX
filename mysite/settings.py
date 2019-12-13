@@ -10,8 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 # mode="ローカルテスト"
-mode="テスト"
-# mode="本番"
+# mode="ローカルテスト2"
+# mode="テスト"
+mode="本番"
 
 import os
 import django_heroku
@@ -28,7 +29,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -164,6 +165,14 @@ if mode=="ローカルテスト":
     SECRET_KEY = twitter.SECRET_KEY
     SOCIAL_AUTH_TWITTER_KEY = twitter.SOCIAL_AUTH_TWITTER_KEY
     SOCIAL_AUTH_TWITTER_SECRET = twitter.SOCIAL_AUTH_TWITTER_SECRET
+
+if mode=="ローカルテスト2":
+    DEBUG=False
+    from .configs import twitter
+    SECRET_KEY = twitter.SECRET_KEY
+    SOCIAL_AUTH_TWITTER_KEY = twitter.SOCIAL_AUTH_TWITTER_KEY
+    SOCIAL_AUTH_TWITTER_SECRET = twitter.SOCIAL_AUTH_TWITTER_SECRET
+
 
 if mode=="テスト":
     DEBUG=True
