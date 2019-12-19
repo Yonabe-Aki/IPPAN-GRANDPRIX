@@ -7,6 +7,7 @@ from requests_oauthlib import OAuth1Session
 import ssl
 from . import twitter_api
 from . import create_img
+import os
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -16,12 +17,15 @@ def base(request):
     return render(request,"flat/participate.html",{"competitions":competitions,"user":user})
 def participate(request):
     user=request.user
-    competitions=Competition.objects.all
+    competitions=Competition.objects.order_by("-id").all
     return render(request,"flat/participate.html",{"competitions":competitions,"user":user})
 def hold(request):
     return render(request,"flat/hold.html")
 
 def post(request,competition_id):
+    competition=Competition.objects.get(id=competition_id)
+    competition.population+=1
+    competition.save()
     content=request.POST.get("content")
     twitter_api.post_twitter(request.user,content,competition_id)
     return redirect("/")
@@ -38,6 +42,14 @@ def create_competition(request):
     create_img.create_img(theme,id)
     new_competition.img="img_"+str(id)+".jpg"
     new_competition.save()
+    return redirect("/")
+
+def get_icon_url(request):
+    social_auth = UserSocialAuth.objects.get(user=request.user, provider='twitter')
+    screen_name=social_auth.extra_data["access_token"]["screen_name"]
+
+    if not os.path.exists(screen_name+'.jpg'):
+        twitter_api.get_user_icon(request.user)
     return redirect("/")
 
 

@@ -9,6 +9,9 @@
     position: fixed;
     box-sizing: border-box;
 }
+.navigation-wrapper{
+    margin-top:100px;
+}
 .command{
     height:30px;
     font-size: 25px;
@@ -19,6 +22,7 @@
     width:30px;
     height:30px;
     vertical-align: middle;
+    border-radius: 50%;
 }
 .command span{
     font-size: 30px;
@@ -45,6 +49,9 @@ main {
     display: flex;
     align-items: baseline;
     flex-direction: column;
+    align-items: center;
+
+
 }
 .theme{
     width:100%;
@@ -139,3 +146,15 @@ main {
     background-color: snow;
     margin-bottom: 20px;
 }
+.theme_form{
+    margin:auto 0;
+    text-align:center;
+}
+.theme_textarea{
+    text-align: center;
+    margin:0 auto;
+    
+    font-size:25px;
+    /* resize:none;  */
+    /* overflow: hidden; */
+} 

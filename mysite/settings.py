@@ -9,10 +9,10 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-# mode="ローカルテスト"
+mode="ローカルテスト"
 # mode="ローカルテスト2"
 # mode="テスト"
-mode="本番"
+# mode="本番"
 
 import os
 import django_heroku
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "flat",
     "social_django",
-    "storages"
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -81,6 +81,8 @@ LOGIN_REDIRECT_URL = "/"
 LOGIN_URL="/login/twitter"
 LOGOUT_REDIRECT_URL = '/'
 
+SOCIAL_AUTH_TWITTER_AUTH_EXTRA_ARGUMENTS = {"force_login":"true"}
+
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.twitter.TwitterOAuth',
     'django.contrib.auth.backends.ModelBackend',
@@ -88,7 +90,7 @@ AUTHENTICATION_BACKENDS = (
 
 
 
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/' 
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/create/image' 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
@@ -158,6 +160,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
  
+AWS_ACCESS_KEY_ID = 'AKIAYLUS3R4UFCTRBFUT'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'manibacket'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400', 
+}
+
+AWS_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
 if mode=="ローカルテスト":
     DEBUG=True

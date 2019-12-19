@@ -25,33 +25,36 @@
 
     <div class="wrapper">
         <div class="navigation">
-            {%if user.is_authenticated%}
-            <h1>{{request.user}}さん<h1>
-            {%endif%}
+            <div class="navigation-wrapper">
+                <div class="command">
+                    <img src="{% static "flat/onigiri.png" %}">    <span>Onigiri</span>
+                </div>
+                <div class="command">
+                    {%if user.is_authenticated%}
+                    <img src="/media/{{request.user}}.jpg">
 
-            <div class="command">
-                <img src="{% static "flat/onigiri.png" %}">    <span>Onigiri</span>
-            
+                    <a>{{request.user}}さん</a>
+                    
+                    {%endif%}
+                </div>
+                <div class="command">
+                    <a href="/hold"><i class="fas fa-plus"><i class="far">開催</i></i></a>
+                </div>      
+                
+                <div class="command">
+                    <a href="/"><i class="far fa-hand-paper">参加</i></a>
+                </div>
+                {%if not user.is_authenticated%}
+                <div class="command">
+                    <a class="twitter-login" href="{% url "social:begin" "twitter"%}"><i class="fab fa-twitter"></i>ログイン</a>
+                </div>
+                {%endif%}
+                {%if user.is_authenticated%}
+                <div class="command">
+                    <a class="twitter-logout" href="logout"><i class="fab fa-twitter"></i>ログアウト</a>
+                </div>
+                {%endif%}
             </div>
-            <div class="command">
-                <a href="/hold"><i class="fas fa-plus"><i class="far">開催</i></i></a>
-            </div>      
-            
-            <div class="command">
-                <a href="/"><i class="far fa-hand-paper">参加</i></a>
-            </div>
-            {%if not user.is_authenticated%}
-            <div class="command">
-                <a class="twitter-login" href="{% url "social:begin" "twitter"%}?force_login=true"><i class="fab fa-twitter"></i>ログイン</a>
-            </div>
-            {%endif%}
-            {%if user.is_authenticated%}
-            <div class="command">
-                <a class="twitter-logout" href="logout"><i class="fab fa-twitter"></i>ログアウト</a>
-            </div>
-            {%endif%}
-
-            
         </div>
         <main>
             {%block content%}
@@ -59,10 +62,10 @@
         </main>
         <div class="right-side">
             
-            <form action="">
+            {% comment %} <form action="">
                 <input type="text" placeholder="キーワード検索">
                 <button type="submit" id="sbtn2"><i class="fas fa-search"></i></button>
-            </form>
+            </form> {% endcomment %}
         </div>   
     </div>
 </body>

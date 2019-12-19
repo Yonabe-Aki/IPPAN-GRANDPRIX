@@ -11,7 +11,9 @@ urlpatterns=[
     path("",views.participate,name="participate"),
     path("post/<int:competition_id>",views.post,name="post"),
     path("detail/<int:competition_id>",views.detail,name="detail"),
-    path("create/competition",views.create_competition,name="create_competition")
+
+    path("create/competition",views.create_competition,name="create_competition"),
+    path("create/image",views.get_icon_url),
 ]
 
 
