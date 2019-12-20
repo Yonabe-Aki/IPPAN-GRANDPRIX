@@ -207,6 +207,9 @@ if mode=="本番":
     AWS_SECRET_ACCESS_KEY=os.environ['AWS_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME=os.environ['AWS_STORAGE_BUCKET_NAME']
 
+    import django_heroku #追加
+    django_heroku.settings(locals()) #追加
+
 
 
 
