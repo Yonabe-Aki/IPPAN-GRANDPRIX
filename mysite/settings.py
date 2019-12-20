@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 # mode="ローカルテスト"
 # mode="ローカルテスト2"
-mode="テスト"
-# mode="本番"
+# mode="テスト"
+mode="本番"
 
 import os
 import django_heroku
@@ -177,9 +177,9 @@ if mode=="ローカルテスト2":
     SECRET_KEY = twitter.SECRET_KEY
     SOCIAL_AUTH_TWITTER_KEY = twitter.SOCIAL_AUTH_TWITTER_KEY
     SOCIAL_AUTH_TWITTER_SECRET = twitter.SOCIAL_AUTH_TWITTER_SECRET
-    AWS_ACCESS_KEY_ID=os.environ["AWS_ACCESS_KEY_ID"]
-    AWS_SECRET_ACCESS_KEY=os.environ['AWS_SECRET_ACCESS_KEY']
-    AWS_STORAGE_BUCKET_NAME=os.environ['AWS_STORAGE_BUCKET_NAME']
+    AWS_ACCESS_KEY_ID=twitter.AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY=twitter.AWS_SECRET_ACCESS_KEY
+    AWS_STORAGE_BUCKET_NAME=twitter.AWS_STORAGE_BUCKET_NAME
 
 
 if mode=="テスト":
