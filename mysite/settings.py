@@ -211,10 +211,6 @@ if mode=="本番":
         
     import dj_database_url
 
-    ###
-    省略
-    ###
-
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
