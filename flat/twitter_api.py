@@ -5,6 +5,7 @@ import twitter
 import json
 import sys
 import requests
+import boto3
 
 sys.path.append("../mysite")
 from mysite import settings
@@ -42,11 +43,13 @@ def get_user_icon(user):
 
     file_name = "media/"+screen_name+".jpg"
 
-    response = requests.get(url)
-    image = response.content
+    res = requests.get(url,stream=True)
+    
+    s3=boto3.client("s3")
 
     with open(file_name, "wb") as aaa:
-        aaa.write(image)
+        s3.upload_fileobj(res.raw,settings.AWS_STORAGE_BUCKET_NAME,settings.AWS_ACCESS_KEY_ID)
+        
 
 
 

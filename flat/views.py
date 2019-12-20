@@ -34,6 +34,7 @@ def detail(request,competition_id):
     competition=Competition.objects.get(id=competition_id)
     return render(request,"flat/detail.html",{"competition":competition})
 
+
 def create_competition(request):
     theme=request.POST.get("theme")
     new_competition=Competition(theme=theme)
@@ -44,13 +45,13 @@ def create_competition(request):
     new_competition.save()
     return redirect("/")
 
-def get_icon_url(request):
-    social_auth = UserSocialAuth.objects.get(user=request.user, provider='twitter')
-    screen_name=social_auth.extra_data["access_token"]["screen_name"]
+# def get_icon_url(request):
+#     social_auth = UserSocialAuth.objects.get(user=request.user, provider='twitter')
+#     screen_name=social_auth.extra_data["access_token"]["screen_name"]
 
-    if not os.path.exists(screen_name+'.jpg'):
-        twitter_api.get_user_icon(request.user)
-    return redirect("/")
+#     if not os.path.exists(screen_name+'.jpg'):
+#         twitter_api.get_user_icon(request.user)
+#     return redirect("/")
 
 
 

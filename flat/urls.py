@@ -13,7 +13,7 @@ urlpatterns=[
     path("detail/<int:competition_id>",views.detail,name="detail"),
 
     path("create/competition",views.create_competition,name="create_competition"),
-    path("create/image",views.get_icon_url),
+    # path("create/image",views.get_icon_url),
 ]
 
 

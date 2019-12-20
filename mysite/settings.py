@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 # mode="ローカルテスト"
 # mode="ローカルテスト2"
-mode="テスト"
-# mode="本番"
+# mode="テスト"
+mode="本番"
 
 import os
 import django_heroku
@@ -90,7 +90,7 @@ AUTHENTICATION_BACKENDS = (
 
 
 
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/create/image' 
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/' 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
@@ -159,18 +159,7 @@ STATIC_ROOT = 'staticfiles'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
- 
-AWS_ACCESS_KEY_ID = 'AKIAYLUS3R4UFCTRBFUT'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'manibacket'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400', 
-}
 
-AWS_LOCATION = 'media'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
 if mode=="ローカルテスト":
     DEBUG=True
@@ -178,6 +167,9 @@ if mode=="ローカルテスト":
     SECRET_KEY = twitter.SECRET_KEY
     SOCIAL_AUTH_TWITTER_KEY = twitter.SOCIAL_AUTH_TWITTER_KEY
     SOCIAL_AUTH_TWITTER_SECRET = twitter.SOCIAL_AUTH_TWITTER_SECRET
+    AWS_ACCESS_KEY_ID=twitter.AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY=twitter.AWS_SECRET_ACCESS_KEY
+    AWS_STORAGE_BUCKET_NAME=twitter.AWS_STORAGE_BUCKET_NAME
 
 if mode=="ローカルテスト2":
     DEBUG=False
@@ -185,6 +177,9 @@ if mode=="ローカルテスト2":
     SECRET_KEY = twitter.SECRET_KEY
     SOCIAL_AUTH_TWITTER_KEY = twitter.SOCIAL_AUTH_TWITTER_KEY
     SOCIAL_AUTH_TWITTER_SECRET = twitter.SOCIAL_AUTH_TWITTER_SECRET
+    AWS_ACCESS_KEY_ID=os.environ["AWS_ACCESS_KEY_ID"]
+    AWS_SECRET_ACCESS_KEY=os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME=os.environ['AWS_STORAGE_BUCKET_NAME']
 
 
 if mode=="テスト":
@@ -199,12 +194,18 @@ if mode=="テスト":
     SECRET_KEY = os.environ["SECRET_KEY"]
     SOCIAL_AUTH_TWITTER_KEY = os.environ["SOCIAL_AUTH_TWITTER_KEY"]
     SOCIAL_AUTH_TWITTER_SECRET = os.environ["SOCIAL_AUTH_TWITTER_SECRET"]
+    AWS_ACCESS_KEY_ID=os.environ["AWS_ACCESS_KEY_ID"]
+    AWS_SECRET_ACCESS_KEY=os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME=os.environ['AWS_STORAGE_BUCKET_NAME']
 
 if mode=="本番":
     DEBUG=False
     SECRET_KEY = os.environ["SECRET_KEY"]
     SOCIAL_AUTH_TWITTER_KEY = os.environ["SOCIAL_AUTH_TWITTER_KEY"]
     SOCIAL_AUTH_TWITTER_SECRET = os.environ["SOCIAL_AUTH_TWITTER_SECRET"]
+    AWS_ACCESS_KEY_ID=os.environ["AWS_ACCESS_KEY_ID"]
+    AWS_SECRET_ACCESS_KEY=os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME=os.environ['AWS_STORAGE_BUCKET_NAME']
 
 
 
@@ -212,4 +213,12 @@ if mode=="本番":
 
     
 
-    
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400', 
+}
+
+AWS_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)

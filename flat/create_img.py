@@ -1,5 +1,10 @@
 from PIL import Image, ImageDraw, ImageFont
 from mysite import settings
+from boto.s3.connection import S3Connection
+from boto.s3.key import Key
+import io
+from io import BytesIO
+
 def create_img(theme,id):
     if settings.mode=="テスト" or settings.mode=="本番":
         font = ImageFont.truetype("/app/.font/ヒラギノ角ゴシック W9.ttc", 60)
@@ -23,7 +28,19 @@ def create_img(theme,id):
         draw.text(coordinate , line_text, fill=(0, 0, 0), font=font)
         num+=1
     
-    img.save("media/img_"+str(id)+".jpg")
+    # img.save("media/img_"+str(id)+".jpg")
+
+    def upload_image_to_s3(img, bucket_name, key_name):
+    
+        conn = S3Connection(settings.AWS_ACCESS_KEY_ID, settings.AWS_SECRET_ACCESS_KEY)
+        bucket = conn.get_bucket(bucket_name)
+        k = Key(bucket, key_name)
+        image_buffer = io.BytesIO()
+        img.save(image_buffer, 'JPEG')
+        image_buffer.seek(0)  
+        k.set_contents_from_string(image_buffer.read(),headers={'Content-Type': 'image/jpeg'})
+    
+    upload_image_to_s3(img,settings.AWS_STORAGE_BUCKET_NAME,"media/img_"+str(id)+".jpg")
 
 
 
