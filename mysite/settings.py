@@ -208,8 +208,27 @@ if mode=="本番":
     AWS_SECRET_ACCESS_KEY=os.environ['AWS_SECRET_ACCESS_KEY']
     AWS_STORAGE_BUCKET_NAME=os.environ['AWS_STORAGE_BUCKET_NAME']
 
-    
+        
+    import dj_database_url
 
+    ###
+    省略
+    ###
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'name',
+            'USER': 'user',
+            'PASSWORD': '',
+            'HOST': 'host',
+            'PORT': '',
+        }
+    }
+
+    db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
+    DATABASES['default'].update(db_from_env)    
+    django_heroku.settings(locals()) #追加
     
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
