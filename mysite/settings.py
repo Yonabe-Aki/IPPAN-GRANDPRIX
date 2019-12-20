@@ -200,6 +200,7 @@ if mode=="テスト":
 
 if mode=="本番":
     DEBUG=False
+    TEMPLATE_DEBUG=True
     SECRET_KEY = os.environ["SECRET_KEY"]
     SOCIAL_AUTH_TWITTER_KEY = os.environ["SOCIAL_AUTH_TWITTER_KEY"]
     SOCIAL_AUTH_TWITTER_SECRET = os.environ["SOCIAL_AUTH_TWITTER_SECRET"]
