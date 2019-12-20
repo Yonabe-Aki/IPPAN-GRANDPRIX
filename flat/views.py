@@ -9,6 +9,7 @@ from . import twitter_api
 from . import create_img
 import os
 
+
 ssl._create_default_https_context = ssl._create_unverified_context
 
 def base(request):
@@ -22,6 +23,7 @@ def participate(request):
 def hold(request):
     return render(request,"flat/hold.html")
 
+@login_required
 def post(request,competition_id):
     competition=Competition.objects.get(id=competition_id)
     competition.population+=1
