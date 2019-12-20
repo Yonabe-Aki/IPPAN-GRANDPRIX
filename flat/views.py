@@ -45,6 +45,7 @@ def create_competition(request):
     new_competition.save()
     return redirect("/")
 
+
 # def get_icon_url(request):
 #     social_auth = UserSocialAuth.objects.get(user=request.user, provider='twitter')
 #     screen_name=social_auth.extra_data["access_token"]["screen_name"]

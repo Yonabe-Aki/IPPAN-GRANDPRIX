@@ -1,5 +1,5 @@
 {% extends 'flat/base.html' %}
-{%block content%}
+{% block content %}
 <h1>100文字以内でみんなに出したいお題を書いてね</h1>
 <form action="create/competition" method="post"　class="theme_form">
     {% csrf_token %}

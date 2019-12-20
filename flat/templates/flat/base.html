@@ -27,15 +27,15 @@
         <div class="navigation">
             <div class="navigation-wrapper">
                 <div class="command">
-                    <img src="{% static "flat/onigiri.png" %}">    <span>Onigiri</span>
-                </div>
-                <div class="command">
                     {%if user.is_authenticated%}
                     
                     
                     <a>{{request.user}}さん</a>
                     
                     {%endif%}
+                </div>
+                <div class="command">
+                    <img src="{% static "flat/onigiri.png" %}">    <span>Onigiri</span>
                 </div>
                 <div class="command">
                     <a href="/hold"><i class="fas fa-plus"><i class="far">開催</i></i></a>
