@@ -18,7 +18,6 @@
     <meta name="description" content="Onigiriは大喜利のお題をサイトに投稿&回答してtwitter上にあげることできるサービスです。目指せ大喜利王！">
     <meta name="keywords" content="大喜利,twitter,ボケて,ipponグランプリ">
     <meta name="google-site-verification" content="xuxHLYZj134Bd6mj2ZrTdUvLaJaQtEvOwINCShiP4HA" />
-
 </head>
 <body>
     {% block extrahead %}
@@ -35,7 +34,7 @@
                     
                     
                     <a>{{request.user}}さん</a>
-                    
+                    <img src={{image_url}}>
                     {%endif%}
                 </div>
                 <div class="command">
@@ -65,14 +64,26 @@
             {%endblock%}
         </main>
         <div class="right-side">
-            
-            {% comment %} <form action="">
-                <input type="text" placeholder="キーワード検索">
-                <button type="submit" id="sbtn2"><i class="fas fa-search"></i></button>
-            </form> {% endcomment %}
         </div>   
     </div>
-</body>
+</body> 
+
+{% comment %} <body>
+    <header>
+        <img src="{% static "flat/onigiri.png" %}">
+        <p>{{request.icon}}</p>
+    </header>
+
+    <main>
+        <div>
+        </div>
+        <div>
+        </div>
+    </manin>
+
+    <nav>
+    </nav>
+</body> {% endcomment %}
 </html>
 
     

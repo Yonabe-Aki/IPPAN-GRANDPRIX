@@ -40,15 +40,15 @@ def get_user_icon(user):
     res=twitter.get(url_text,params=params).json()
     url=res["profile_image_url"]
     print(url)
+    return(url)
+    # file_name = "media/"+screen_name+".jpg"
 
-    file_name = "media/"+screen_name+".jpg"
-
-    res = requests.get(url,stream=True)
+    # res = requests.get(url,stream=True)
     
-    s3=boto3.client("s3")
+    # s3=boto3.client("s3")
 
-    with open(file_name, "wb") as aaa:
-        s3.upload_fileobj(res.raw,settings.AWS_STORAGE_BUCKET_NAME,settings.AWS_ACCESS_KEY_ID)
+    # with open(file_name, "wb") as aaa:
+    #     s3.upload_fileobj(res.raw,settings.AWS_STORAGE_BUCKET_NAME,settings.AWS_ACCESS_KEY_ID)
         
 
 
