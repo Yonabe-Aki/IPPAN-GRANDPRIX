@@ -19,7 +19,7 @@
     <meta name="keywords" content="大喜利,twitter,ボケて,ipponグランプリ">
     <meta name="google-site-verification" content="xuxHLYZj134Bd6mj2ZrTdUvLaJaQtEvOwINCShiP4HA" />
 </head>
-<body>
+{% comment %} <body>
     {% block extrahead %}
       <link href="{% static 'reset.css' %}" rel="stylesheet">
       <link href="{% static 'style.css' %}" rel="stylesheet">
@@ -66,24 +66,69 @@
         <div class="right-side">
         </div>   
     </div>
-</body> 
+</body>  {% endcomment %}
 
-{% comment %} <body>
+<body>
+    {% block extrahead %}
+    <link href="{% static 'reset.css' %}" rel="stylesheet">
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+    {% endblock %}
     <header>
         <img src="{% static "flat/onigiri.png" %}">
-        <p>{{request.icon}}</p>
+        {% comment %} <img src={{image_url}}> {% endcomment %}
     </header>
 
     <main>
-        <div>
+        <div id="descript">
+            <div id="zigazo-wrapper">
+                <img src="{%static "flat/管理人.png"%}" id="zigazo">
+            </div>
+            <p>このサイトはtwitter上でipp⚫︎nグランプリができるサイトです。</p>
+            <p>twitterアカウントでログインしてお題の画像をクリックするとお題画像と共に回答をtwitterに投稿できます。</p>
+            <p>自分でお題を考えてサイトに掲載してみんなに回答してもらうこともできます。</p>
+            <p>全ての機能が無料です。</p>
+            <p>ではよろしゅう。</p>
         </div>
-        <div>
+        
+        {% comment %} {%block content%}
+        {%for competition in competitions%}
+        <div class="theme">
+            <div class="theme-space">
+            </div>
+            <img src="{{competition.img.url }}" />
+            <div class="participants">
+                <span class="far fa-hand-paper">{{competition.population}}</span>
+            </div>
         </div>
-    </manin>
+        {% endfor %}
+        {% endblock %} {% endcomment %}
+
+        {%block content%}
+        {% with ''|center:6 as range %}
+        {% for _ in range %}
+        <div class="theme">
+            <div class="theme-space">
+            </div>
+            <img src="{%static "flat/frame2.jpg"%}" />
+            <div class="participants">
+                <span class="far fa-hand-paper">32</span>
+            </div>
+        </div>
+        {% endfor %}
+        {% endwith %}
+        {% endblock %}
+        
+    </main>
 
     <nav>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
     </nav>
-</body> {% endcomment %}
+</body> 
 </html>
 
     

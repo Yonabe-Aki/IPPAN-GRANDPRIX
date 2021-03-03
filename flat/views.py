@@ -15,8 +15,8 @@ ssl._create_default_https_context = ssl._create_unverified_context
 def base(request):
     competitions=Competition.objects.all
     user=request.user
-    image_url=twitter_api.get_user_icon(request.user)
-    return render(request,"flat/participate.html",{"competitions":competitions,"user":user,"image_url":image_url})
+    # image_url=twitter_api.get_user_icon(request.user)
+    return render(request,"flat/base.html",{"competitions":competitions,"user":user})
 def participate(request):
     user=request.user
     competitions=Competition.objects.order_by("-id").all
