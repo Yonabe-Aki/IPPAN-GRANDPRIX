@@ -75,7 +75,7 @@
     {% endblock %}
     <header>
         <img src="{% static "flat/onigiri.png" %}">
-        {% comment %} <img src={{image_url}}> {% endcomment %}
+        {% comment %} <img src={{image_url}}>  {% endcomment %}
     </header>
 
     <main>
@@ -116,18 +116,34 @@
         </div>
         {% endfor %}
         {% endwith %}
-        {% endblock %}
-        
+        {% endblock %}    
     </main>
 
     <nav>
-        <div>
+        <div class="nav-box"> 
+            <i class="fas fa-exclamation"></i>
+            <p>お題一覧</p>
         </div>
-        <div>
+        <div class="nav-box">
+            <i class="fas fa-question"></i>
+            <p>お題投稿</p>
         </div>
-        <div>
+        {%if not user.is_authenticated%}
+        <div class="nav-box log-box">
+            <a href="{% url "social:begin" "twitter"%}"></a>
+            <i class="fas fa-sign-in-alt"></i>
+            <p>ログイン</p>
         </div>
+        {% endif %}
+        {%if user.is_authenticated%}
+        <div class="nav-box log-box">
+            <a href="{% url "logout"%}"></a>
+            <i class="fas fa-sign-out-alt"></i>
+            <p>ログアウト</p>
+        </div>
+        {% endif %}
     </nav>
+
 </body> 
 </html>
 

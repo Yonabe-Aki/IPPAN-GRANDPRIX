@@ -208,7 +208,47 @@ main {
 
 
     nav{
-        height:10vh;
-        background-color: red;
+        width: 100%;
+        display:flex;
+        /* display: none; */
+        height:13vh;
+        position: fixed;
+        z-index: 500;
+        bottom:0;
     }
+    .nav-box{
+        display: flex;
+        flex-direction: column;
+        width: 33%;
+        border: solid;
+        text-align: center;
+        justify-content: center;
+        background-color:#fefefe;
+    }
+    .log-box{
+        position: relative;
+    }
+    .log-box a{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height:100%;
+        width: 100%;
+    }
+    .nav-box>.fas{
+        font-size: 40px;
+    }
+    .fa-exclamation{
+        color: tomato;
+    }
+    .fa-question{
+        color: olive;
+    }
+    .fa-sign-in-alt{
+        color:#1ea1f1;
+    }
+    .fa-sign-out-alt{
+        color:#1ea1f1;
+    }
+
 }
