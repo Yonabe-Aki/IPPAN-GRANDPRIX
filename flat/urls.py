@@ -8,7 +8,7 @@ app_name="flat"
 
 urlpatterns=[
     path("hold",views.hold,name="hold"),
-    path("",views.base,name="base"),
+    path("",views.participate,name="participate"),
     path("post/<int:competition_id>",views.post,name="post"),
     path("detail/<int:competition_id>",views.detail,name="detail"),
 

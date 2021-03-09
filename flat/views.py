@@ -12,18 +12,24 @@ import os
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
-def base(request):
-    competitions=Competition.objects.all
-    user=request.user
-    # image_url=twitter_api.get_user_icon(request.user)
-    return render(request,"flat/base.html",{"competitions":competitions,"user":user})
+
 def participate(request):
-    user=request.user
     competitions=Competition.objects.order_by("-id").all
-    image_url=twitter_api.get_user_icon(request.user)
-    return render(request,"flat/participate.html",{"competitions":competitions,"user":user,"image_url":image_url})
+    user=request.user
+    if user.is_authenticated:
+        image_url=twitter_api.get_user_icon(request.user)
+        return render(request,"flat/participate.html",{"competitions":competitions,"user":user,"image_url":image_url})
+    else:
+        return render(request,"flat/participate.html",{"competitions":competitions,"user":user})
+
 def hold(request):
-    return render(request,"flat/hold.html")
+    user = request.user
+    if user.is_authenticated:
+        image_url=twitter_api.get_user_icon(request.user)
+        return render(request,"flat/hold.html",{"image_url":image_url})
+    else:
+        return render(request,"flat/hold.html")
+
 
 @login_required
 def post(request,competition_id):

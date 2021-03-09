@@ -164,10 +164,12 @@ main {
     }
 
     header{
+        display: flex;
         width: 100vw;
         height:10vh;
         border-bottom: solid;
         border-color: gray;
+        align-items: center;
     }
     header img{
         width: 50px;
@@ -183,6 +185,7 @@ main {
     #zigazo-wrapper{
         height:100%;
         float: left;
+
     }
     #zigazo{
         width:70px;
@@ -224,11 +227,9 @@ main {
         text-align: center;
         justify-content: center;
         background-color:#fefefe;
+        position:relative;
     }
-    .log-box{
-        position: relative;
-    }
-    .log-box a{
+    .nav-box a{
         position: absolute;
         top: 0;
         left: 0;

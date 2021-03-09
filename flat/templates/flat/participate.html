@@ -1,14 +1,40 @@
 {% extends 'flat/base.html' %}
+{% load static %}
 {%block content%}
-    {%for competition in competitions%}
-        <div class="theme">
-            <a href="detail/{{competition.id}}">
-            <img class="img" src="{{competition.img.url }}" />
-            </a>
-            <div class="participants">
-                <span class="far fa-hand-paper">{{competition.population}}</span>
-            </div>
+{% comment %} {%for competition in competitions%}
+    <div class="theme">
+        <a href="detail/{{competition.id}}">
+        <img class="img" src="{{competition.img.url }}" />
+        </a>
+        <div class="participants">
+            <span class="far fa-hand-paper">{{competition.population}}</span>
         </div>
-    {% endfor %}
+    </div>
+{% endfor %} {% endcomment %}
+{%if not user.is_authenticated%}
+<div id="descript">
+    <div id="zigazo-wrapper">
+        <img src="{%static "flat/管理人.png"%}" id="zigazo">
+    </div>
+    <p>このサイトはtwitter上でipp⚫︎nグランプリができるサイトです。</p>
+    <p>twitterアカウントでログインしてお題の画像をクリックするとお題画像と共に回答tterに投稿できます。</p>
+    <p>自分でお題を考えてサイトに掲載してみんなに回答してもらうこともできます。</p>
+    <p>全ての機能が無料です。</p>
+    <p>ではよろしゅう。</p>
+</div>
+{%endif%} 
+
+{% with ''|center:6 as range %}
+{% for _ in range %}
+<div class="theme">
+    <div class="theme-space">
+    </div>
+    <img src="{%static "flat/frame2.jpg"%}" />
+    <div class="participants">
+        <span class="far fa-hand-paper">32</span>
+    </div>
+</div>
+{% endfor %}
+{% endwith %}
 {% endblock %}
 

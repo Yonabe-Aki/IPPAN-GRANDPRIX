@@ -75,56 +75,24 @@
     {% endblock %}
     <header>
         <img src="{% static "flat/onigiri.png" %}">
-        {% comment %} <img src={{image_url}}>  {% endcomment %}
+        {% if user.is_authenticated %}
+        <img src={{image_url}}>  
+        {% endif %}
     </header>
 
     <main>
-        <div id="descript">
-            <div id="zigazo-wrapper">
-                <img src="{%static "flat/管理人.png"%}" id="zigazo">
-            </div>
-            <p>このサイトはtwitter上でipp⚫︎nグランプリができるサイトです。</p>
-            <p>twitterアカウントでログインしてお題の画像をクリックするとお題画像と共に回答をtwitterに投稿できます。</p>
-            <p>自分でお題を考えてサイトに掲載してみんなに回答してもらうこともできます。</p>
-            <p>全ての機能が無料です。</p>
-            <p>ではよろしゅう。</p>
-        </div>
-        
-        {% comment %} {%block content%}
-        {%for competition in competitions%}
-        <div class="theme">
-            <div class="theme-space">
-            </div>
-            <img src="{{competition.img.url }}" />
-            <div class="participants">
-                <span class="far fa-hand-paper">{{competition.population}}</span>
-            </div>
-        </div>
-        {% endfor %}
-        {% endblock %} {% endcomment %}
-
-        {%block content%}
-        {% with ''|center:6 as range %}
-        {% for _ in range %}
-        <div class="theme">
-            <div class="theme-space">
-            </div>
-            <img src="{%static "flat/frame2.jpg"%}" />
-            <div class="participants">
-                <span class="far fa-hand-paper">32</span>
-            </div>
-        </div>
-        {% endfor %}
-        {% endwith %}
-        {% endblock %}    
+    {%block content%}
+    {%endblock%}
     </main>
 
     <nav>
-        <div class="nav-box"> 
+        <div class="nav-box">
+            <a href="/"></a> 
             <i class="fas fa-exclamation"></i>
             <p>お題一覧</p>
         </div>
         <div class="nav-box">
+            <a href="/hold"></a>
             <i class="fas fa-question"></i>
             <p>お題投稿</p>
         </div>
