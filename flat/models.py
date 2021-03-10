@@ -21,7 +21,7 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 class Competition(models.Model):
-    theme=models.CharField(max_length=50,default=0)
+    theme = models.CharField(max_length=50,default=0)
     img = models.ImageField(upload_to='', default='defo')
     population=models.IntegerField(default=0)
     def __str__(self):

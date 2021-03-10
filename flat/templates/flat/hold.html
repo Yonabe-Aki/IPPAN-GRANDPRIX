@@ -1,12 +1,17 @@
 {% extends 'flat/base.html' %}
 {% load static %}
 {% block content %}
-<h1>100文字以内でみんなに出したいお題を書いてね</h1>
-<form action="create/competition" method="post" class="theme_form">
+<div class="theme-space">
+</div>
+<div id="alert-wrap">
+    <h1>100文字以内でみんなに出したいお題を書いてね</h1>
+</div>
+<form action="create/competition" method="post" class="post-form">
     {% csrf_token %}
-    <textarea name="theme" class="theme_textarea"
+    <textarea name="theme" class="post-textarea"
     maxlength="100" cols="30" rows="8" wrap="hard"></textarea>
-    <button type="submit">送信</button>
+    <br>
+    <button type="submit" id="hold-btn">投稿</button>
 </form>
 {% endblock %}
 

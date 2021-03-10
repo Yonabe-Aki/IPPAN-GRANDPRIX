@@ -8,19 +8,20 @@ import ssl
 from . import twitter_api
 from . import create_img
 import os
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-def participate(request):
-    competitions=Competition.objects.order_by("-id").all
-    user=request.user
-    if user.is_authenticated:
-        image_url=twitter_api.get_user_icon(request.user)
-        return render(request,"flat/participate.html",{"competitions":competitions,"user":user,"image_url":image_url})
-    else:
-        return render(request,"flat/participate.html",{"competitions":competitions,"user":user})
+# def participate(request):
+#     competitions=Competition.objects.order_by("-id").all
+#     user=request.user
+#     if user.is_authenticated:
+#         image_url=twitter_api.get_user_icon(request.user)
+#         return render(request,"flat/participate.html",{"competitions":competitions,"user":user,"image_url":image_url})
+#     else:
+#         return render(request,"flat/participate.html",{"competitions":competitions,"user":user})
 
 def hold(request):
     user = request.user
@@ -29,6 +30,16 @@ def hold(request):
         return render(request,"flat/hold.html",{"image_url":image_url})
     else:
         return render(request,"flat/hold.html")
+
+
+def detail(request,competition_id):
+    competition=Competition.objects.get(id=competition_id)
+    user = request.user
+    if user.is_authenticated:
+        image_url=twitter_api.get_user_icon(request.user)
+        return render(request,"flat/detail.html",{"image_url":image_url,"competition":competition})
+    else:
+        return render(request,"flat/hold.html",{"competition":competition})
 
 
 @login_required
@@ -40,9 +51,6 @@ def post(request,competition_id):
     twitter_api.post_twitter(request.user,content,competition_id)
     return redirect("/")
 
-def detail(request,competition_id):
-    competition=Competition.objects.get(id=competition_id)
-    return render(request,"flat/detail.html",{"competition":competition})
 
 
 def create_competition(request):
@@ -55,6 +63,68 @@ def create_competition(request):
     new_competition.save()
     return redirect("/")
 
+# def participate(request, url_code):
+#     competitions=Competition.objects.order_by("-id").all
+#     user=request.user
+#     if request.method == 'GET':
+#        page_num = request.GET.get('p', 1)
+#        pagenator = Paginator(
+#            Topic.objects.filter(category__url_code=url_code),
+#            1 # 1ページに表示するオブジェクト数
+#        )
+#        try:
+#            page = pagenator.page(page_num)
+#        except PageNotAnInteger:
+#            page = pagenator.page(1)
+#        except EmptyPage:
+#            page = pagenator.page(pagenator.num_pages)
+
+#        ctx = {
+#            'category': get_object_or_404(Category, url_code=url_code),
+#            'page_obj': page,
+#            'topic_list': page.object_list, # pageでもOK
+#            'is_paginated': page.has_other_pages,
+#        }
+
+#     if user.is_authenticated:
+#         image_url=twitter_api.get_user_icon(request.user)
+#         return render(request,"flat/participate.html",{"competitions":competitions,"user":user,"image_url":image_url},ctx)
+#     else:
+#         return render(request,"flat/participate.html",{"competitions":competitions,"user":user},ctx)
+def paginate_queryset(request, queryset, count):
+    """Pageオブジェクトを返す。
+
+    ページングしたい場合に利用してください。
+
+    countは、1ページに表示する件数です。
+    返却するPgaeオブジェクトは、以下のような感じで使えます。
+
+        {% if page_obj.has_previous %}
+          <a href="?page={{ page_obj.previous_page_number }}">Prev</a>
+        {% endif %}
+
+    また、page_obj.object_list で、count件数分の絞り込まれたquerysetが取得できます。
+
+    """
+    paginator = Paginator(queryset, count)
+    page = request.GET.get('page')
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+    return page_obj
+
+
+def participate(request):
+    competitions = Competition.objects.all()
+    page_obj = paginate_queryset(request, competitions, 5)
+    context = {
+        'competition_list': page_obj.object_list,
+        'page_obj': page_obj,
+    }
+    return render(request, 'flat/participate.html', context)
 
 # def get_icon_url(request):
 #     social_auth = UserSocialAuth.objects.get(user=request.user, provider='twitter')
