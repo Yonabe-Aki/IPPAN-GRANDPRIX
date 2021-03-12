@@ -120,11 +120,22 @@ def paginate_queryset(request, queryset, count):
 def participate(request):
     competitions = Competition.objects.all()
     page_obj = paginate_queryset(request, competitions, 5)
-    context = {
-        'competition_list': page_obj.object_list,
-        'page_obj': page_obj,
-    }
-    return render(request, 'flat/participate.html', context)
+    user = request.user
+    if user.is_authenticated:
+        image_url=twitter_api.get_user_icon(request.user)
+        context = {
+            'competition_list': page_obj.object_list,
+            'page_obj': page_obj,
+            "image_url" : image_url,
+        }
+        return render(request, 'flat/participate.html', context)
+    else:
+        context = {
+            'competition_list': page_obj.object_list,
+            'page_obj': page_obj,
+        }
+        return render(request, "flat/participate.html", context)
+
 
 # def get_icon_url(request):
 #     social_auth = UserSocialAuth.objects.get(user=request.user, provider='twitter')
