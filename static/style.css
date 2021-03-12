@@ -1,323 +1,158 @@
-/* @import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
-.wrapper{
+
+
+/* media screen and (max-width:767px){ */
+body{
+    background-color: #FEFFFE;
+    }
+header{
     display: flex;
+    width: 100vw;
+    height:10vh;
+    border-bottom: solid;
+    border-color: gray;
+    align-items: center;
+    justify-content: space-between;
 }
-.navigation{
-    width:25%;
-    height: 100%;
-    border-right: solid 2px gainsboro;
-    position: fixed;
-    box-sizing: border-box;
+header img{
+    width: 50px;
+    height: 50px;
+    margin:0 5%;
 }
-.navigation-wrapper{
-    margin-top:100px;
-}
-.command{
-    height:30px;
-    font-size: 25px;
-    margin-top: 30px;
-    margin-left: 100px;
-}
-.command img{
-    width:30px;
-    height:30px;
-    vertical-align: middle;
+#twi-icon{
+    border: 1px solid #ccc;
     border-radius: 50%;
 }
-.command span{
-    font-size: 30px;
-    font-family: 'Sawarabi Mincho', sans-serif;
+main{
+    width: 100%;
 }
-.command a{
-    text-decoration: none;
-    color:black;
-    transition:0.5s;
+#descript{
+    line-height: 25px;
 }
-.command a:hover{
-    background-color: skyblue;
-    color:white;
-    border-radius: 5%;
-    height:30px;
+#zigazo-wrapper{
+    height:100%;
+        float: left;
 }
-.fa-twitter{
-    color:#2CA7E0;
+#zigazo{
+    width:70px;
+    height: 220px;
+    margin-right: 15px;
+    margin-left: 15px;
 }
-main {
-    margin-left: 25%;
-    width:40%;
-    height:1000px;
-    display: flex;
-    align-items: baseline;
-    flex-direction: column;
-    align-items: center;
-
-
+.theme-space{
+    height:50px;
+    background-color: #f0f0f0;
 }
-.theme{
-    width:100%;
-    border-bottom:2px solid gainsboro;
-    box-sizing: border-box;
-    padding-bottom: 15px;
-    position: relative;
-}
-.img{
-    width:100%;
-    height:90%;
+.theme img{
+    width: 100%;
+    height: 250px;
 }
 .participants{
-    width:100%;
-    height:10%;
-    display:inline-flex;
-    justify-content: space-around;
+    height:30px;
+    text-align: center;
+    font-size: 25px;
 }
-.participants span{
-    font-size: 20px;
-    color: darkgray;
-    line-height: 50px;
-}
-.right-side{
-    width:30%;
-    height:1000px;
-    border-left:solid 2px gainsboro;
-    box-sizing: border-box;
-}
-
-.right-side form{
-    position: relative;
-    margin-top: 30px;
-    margin-left: 30px;
-}
-.right-side input{
-    width:200px;
-    height: 30px;
-    position: absolute;
-    left:0;
-    top:0;
-}
-.right-side button{
-    position: absolute;
-    left:175px;
-    top:0;
-    height:35px;
-    width:35px;
-}
-
-.modal_window{
-    width:100%;
-    height: 100%;
-    left:0%;
-    position:fixed;
-    display: none;
-    flex-direction: column;
-    align-items:center;
-    background:rgba(124,124,124,0.8) ;
-    z-index:1;
-    align-content: center;
+#pagenation{
+    margin-top: 10px;
+    list-style: none;
+    display:flex;
     justify-content: center;
 }
-.modal_window_wrapper{
+#pagenation li{
+    width:30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border: solid;
+    border-color: #dddddd;
+    border-width: 2px;
+}
+#pagenation li a{
+    text-decoration: none;
+}
+#now-page{
+    background-color: #e91e63;
+}
+#now-page a{
+    color:white;
+    }
+#nav-space{
+    width: 100%;
+    height: 20vh;
+    }
+nav{
+    width: 100%;
+    display:flex;
+    height:13vh;
+    position: fixed;
+    z-index: 500;
+    bottom:0;
+}
+.nav-box{
     display: flex;
     flex-direction: column;
-    width:30%;
-    height:50%;
-    background-color: white;
-    justify-content: space-around;
+    width: 33%;
+    border: solid;
     text-align: center;
+    justify-content: center;
+    background-color:#fefefe;
+    position:relative;
 }
-.modal_window textarea{
-    margin: 0 auto;
-    width:70%;
-    height:40%;
-    margin-bottom:20px;
+.nav-box a{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:100%;
+    width: 100%;
 }
-
-.tweet_btn{
-    margin: 0 auto;
-    display:block;
-    width:100px;
-    height:30px;
-    background-color: #2CA7E0;
-    color:white;
+.nav-box>.fas{
+    font-size: 40px;
 }
-.close_btn{
-    margin: 0 auto;
-    width:100px;
-    height:30px;
-    background-color: snow;
-    margin-bottom: 20px;
+.fa-exclamation{
+    color: tomato;
 }
-.theme_form{
-    margin:auto 0;
-    text-align:center;
+.fa-question{
+    color: olive;
 }
-.theme_textarea{
+.fa-sign-in-alt{
+    color:#1ea1f1;
+}
+.fa-sign-out-alt{
+    color:#1ea1f1;
+    }
+.post-form{
     text-align: center;
+    margin-top: 20px;
+}
+.post-textarea{
+    font-size: 1.5rem;
+    width: 70%;
+    height: 20vh;
     margin:0 auto;
-    
-    font-size:25px;
-}  */
-
-
-@media screen and (max-width:767px){
-    body{
-        background-color: #FEFFFE;
-    }
-
-    header{
-        display: flex;
-        width: 100vw;
-        height:10vh;
-        border-bottom: solid;
-        border-color: gray;
-        align-items: center;
-        justify-content: space-between;
-    }
-    header img{
-        width: 50px;
-        height: 50px;
-        margin:0 5%;
-    }
-    #twi-icon{
-        border: 1px solid #ccc;
-        border-radius: 50%;
-    }
-    main{
-        width: 100%;
-    }
-    #descript{
-        line-height: 25px;
-    }
-    #zigazo-wrapper{
-        height:100%;
-        float: left;
-
-    }
-    #zigazo{
-        width:70px;
-        height: 220px;
-        margin-right: 15px;
-        margin-left: 15px;
-    }
-    .theme-space{
-        height:50px;
-        background-color: #f0f0f0;
-    }
-    .theme img{
-        width: 100%;
-        height: 250px;
-    }
-    .participants{
-        height:30px;
-        text-align: center;
-        font-size: 25px;
-    }
-    #pagenation{
-        margin-top: 10px;
-        list-style: none;
-        display:flex;
-        justify-content: center;
-    }
-    #pagenation li{
-        width:30px;
-        height: 30px;
-        text-align: center;
-        line-height: 30px;
-        border: solid;
-        border-color: #dddddd;
-        border-width: 2px;
-    }
-    #pagenation li a{
-        text-decoration: none;
-    }
-    #now-page{
-        background-color: #e91e63;
-    }
-    #now-page a{
-        color:white;
-    }
-
-    #nav-space{
-        width: 100%;
-        height: 20vh;
-    }
-
-    nav{
-        width: 100%;
-        display:flex;
-        height:13vh;
-        position: fixed;
-        z-index: 500;
-        bottom:0;
-    }
-    .nav-box{
-        display: flex;
-        flex-direction: column;
-        width: 33%;
-        border: solid;
-        text-align: center;
-        justify-content: center;
-        background-color:#fefefe;
-        position:relative;
-    }
-    .nav-box a{
-        position: absolute;
-        top: 0;
-        left: 0;
-        height:100%;
-        width: 100%;
-    }
-    .nav-box>.fas{
-        font-size: 40px;
-    }
-    .fa-exclamation{
-        color: tomato;
-    }
-    .fa-question{
-        color: olive;
-    }
-    .fa-sign-in-alt{
-        color:#1ea1f1;
-    }
-    .fa-sign-out-alt{
-        color:#1ea1f1;
-    }
-
-    .post-form{
-        text-align: center;
-        margin-top: 20px;
-    }
-    .post-textarea{
-        font-size: 1.5rem;
-        width: 70%;
-        height: 20vh;
-        margin:0 auto;
-    }
-    #twi-btn{
-        font-size:1rem;
-        width: 100px;
-        height: 40px;
-        margin-top: 20px;
-        background-color:#1ea1f1;
-        color: white;
-        border-radius: 5px;
-        border: none;
-    }
-
-    #hold-btn{
-        font-size:1rem;
-        width: 100px;
-        height: 40px;
-        margin-top: 20px;
-        background-color:#1ea1f1;
-        color: white;
-        border-radius: 5px;
-        border: none;
-    }
-    #alert-wrap{
-        text-align: center;
-    }
-    #alert-wrap h1{
-        margin-top: 20px;
-    }
-
 }
+#twi-btn{
+    font-size:1rem;
+    width: 100px;
+    height: 40px;
+    margin-top: 20px;
+    background-color:#1ea1f1;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    }
+#hold-btn{
+    font-size:1rem;
+    width: 100px;
+    height: 40px;
+    margin-top: 20px;
+    background-color:#1ea1f1;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+#alert-wrap{
+    text-align: center;
+}
+#alert-wrap h1{
+    margin-top: 20px;
+}
+/* } */
