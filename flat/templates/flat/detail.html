@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+    {% block meta %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,6 +17,8 @@
     <meta property="og:title" content="お題" /> <!--④-->
     <meta property="og:description" content="大喜利" /> <!--⑤-->
     <meta property="og:image" content="https://manibacket.s3.amazonaws.com/media/img_{{competition.id}}.jpg"/>
+    {% endblock meta %}
+
 </head>
 
 <body>
@@ -46,6 +49,7 @@
             <input type="submit" value="tweetする" id="twi-btn"> 
         </form>
     </main>
+
     <div id="nav-space">
     </div>
     <nav>
