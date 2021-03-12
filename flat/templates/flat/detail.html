@@ -13,19 +13,10 @@
     </script>
     <meta name="twitter:card" content="summary_large_image" /> <!--①-->
     <meta name="twitter:site" content="@mani18041601" /> <!--②-->
-    {% comment %} <meta property="og:url" content="https://omusubi.herokuapp.com/detail/{{competition.id}}" /> <!--③-->
+    <meta property="og:url" content="https://omusubi.herokuapp.com/detail/{{competition.id}}" /> 
     <meta property="og:title" content="お題" /> <!--④-->
     <meta property="og:description" content="大喜利" /> <!--⑤-->
-    <meta property="og:image" content="https://manibacket.s3.amazonaws.com/media/img_{{competition.id}}.jpg"/>  {% endcomment %}
-    <meta name=”twitter:title” content=”タイトル“>
-    <meta name=”twitter:description” content=”説明文”>
-    <meta name=”twitter:image” content=“https://manibacket.s3.amazonaws.com/media/img_{{competition.id}}.jpg/">
-
-
-
-    <meta name="description" content="Onigiriは大喜利のお題をサイトに投稿&回答してtwitter上にあげることできるサービスです。目指せ大喜利王！">
-    <meta name="keywords" content="大喜利,twitter,ボケて,ipponグランプリ">
-    <meta name="google-site-verification" content="xuxHLYZj134Bd6mj2ZrTdUvLaJaQtEvOwINCShiP4HA" />
+    <meta property="og:image" content="https://manibacket.s3.amazonaws.com/media/img_{{competition.id}}.jpg"/>  
     {% endblock meta %}
 </head>
 
