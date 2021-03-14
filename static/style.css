@@ -157,7 +157,7 @@ main {
     font-size:25px;
 }  */
 
-
+@charset "utf-8";
 @media screen and (max-width:767px){
     body{
         background-color: #FEFFFE;
