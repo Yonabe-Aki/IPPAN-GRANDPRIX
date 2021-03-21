@@ -7,28 +7,16 @@
     <div id="zigazo-wrapper">
         <img src="{%static "flat/管理人.png"%}" id="zigazo">
     </div>
-    <p>このサイトはtwitter上でipp⚫︎nグランプリができるサイトです。</p>
-    <p>twitterアカウントでログインしてお題の画像をクリックするとお題画像と共に回答tterに投稿できます。</p>
-    <p>自分でお題を考えてサイトに掲載してみんなに回答してもらうこともできます。</p>
-    <p>全ての機能が無料です。</p>
-    <p>ではよろしゅう。</p>
+    <div id = "explain">
+        <p>このサイトはtwitter上でipp⚫︎nグランプリができるサイトです。</p>
+        <p>twitterアカウントでログインしてお題をクリックするとお題画像と共に回答をtwitterに投稿できます。</p>
+        <p>自分でお題を考えてサイトに掲載してみんなに回答してもらうこともできます。</p>
+        <p>全ての機能が無料です。</p>
+        <p>ではよろしゅう。</p>
+    </div>
 </div>
 {%endif%} 
 
-{% comment %} {% with ''|center:6 as range %}
-{% for _ in range %}
-<div class="theme">
-    <div class="theme-space">
-    </div>
-    <a href="detail/{{competition.id}}">
-    <img src="{%static "flat/frame2.jpg"%}" />
-    </a>
-    <div class="participants">
-        <span class="far fa-hand-paper">32</span>
-    </div>
-</div>
-{% endfor %}
-{% endwith %} {% endcomment %}
 
 {%for competition in competition_list%}
     <div class="theme-space">

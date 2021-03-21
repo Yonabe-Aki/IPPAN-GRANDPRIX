@@ -20,70 +20,22 @@
     <meta name="keywords" content="大喜利,twitter,ボケて,ipponグランプリ">
     <meta name="google-site-verification" content="xuxHLYZj134Bd6mj2ZrTdUvLaJaQtEvOwINCShiP4HA" />
     <script src="https://kit.fontawesome.com/9110abeef8.js" crossorigin="anonymous"></script>
-    <link href="{% static 'reset.css' %}" rel="stylesheet" >
-    <link href="{% static 'style.css' %}" rel="stylesheet" >
 </head>
-{% comment %} <body>
-    {% block extrahead %}
-      <link href="{% static 'reset.css' %}" rel="stylesheet">
-      <link href="{% static 'style.css' %}" rel="stylesheet">
-    {% endblock %}
-    
-
-    <div class="wrapper">
-        <div class="navigation">
-            <div class="navigation-wrapper">
-                <div class="command">
-                    {%if user.is_authenticated%}
-                    
-                    
-                    <a>{{request.user}}さん</a>
-                    <img src={{image_url}}>
-                    {%endif%}
-                </div>
-                <div class="command">
-                    <img src="{% static "flat/onigiri.png" %}">    <span>Onigiri</span>
-                </div>
-                <div class="command">
-                    <a href="/hold"><i class="fas fa-plus"><i class="far">開催</i></i></a>
-                </div>      
-                
-                <div class="command">
-                    <a href="/"><i class="far fa-hand-paper">参加</i></a>
-                </div>
-                {%if not user.is_authenticated%}
-                <div class="command">
-                    <a class="twitter-login" href="{% url "social:begin" "twitter"%}"><i class="fab fa-twitter"></i>ログイン</a>
-                </div>
-                {%endif%}
-                {%if user.is_authenticated%}
-                <div class="command">
-                    <a class="twitter-logout" href="logout"><i class="fab fa-twitter"></i>ログアウト</a>
-                </div>
-                {%endif%}
-            </div>
-        </div>
-        <main>
-            {%block content%}
-            {%endblock%}
-        </main>
-        <div class="right-side">
-        </div>   
-    </div>
-</body>  {% endcomment %}
 
 <body>
-    {% comment %} {% block extrahead %}
-    <link href="{% static 'reset.css' %}" rel="stylesheet">
-    <link href="{% static 'style.css' %}" rel="stylesheet">
-    {% endblock %} {% endcomment %}
+    {% block extrahead %}
+    <link href="{% static 'reset.css' %}" rel="stylesheet" type = "text/css">
+    <link href="{% static 'style.css' %}" rel="stylesheet" type = "text/css">
+    {% endblock %} 
+
+    <div id = "wrapper">
+
     <header>
         <img src="{% static "flat/onigiri.png" %}">
         {% if user.is_authenticated %}
         <img id = "twi-icon" src={{image_url}}>  
         {% endif %}
-    </header>
-
+    </header> 
     <main>
     {%block content%}
     {%endblock%}
@@ -116,6 +68,7 @@
         </div>
         {% endif %}
     </nav>
+    </div>
 
 </body> 
 </html>
