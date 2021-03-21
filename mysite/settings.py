@@ -9,10 +9,10 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-# mode="ローカルテスト"
+mode="ローカルテスト"
 # mode="ローカルテスト2"
 # mode="テスト"
-mode="本番"
+# mode="本番"
 
 import os
 import django_heroku
@@ -155,7 +155,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
 
-# STATIC_ROOT = 'staticfiles'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
