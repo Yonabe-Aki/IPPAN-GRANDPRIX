@@ -202,8 +202,7 @@ if mode=="テスト":
     AWS_STORAGE_BUCKET_NAME=os.environ['AWS_STORAGE_BUCKET_NAME']
 
 if mode=="本番":
-    # DEBUG=False
-    DEBUG = True
+    DEBUG=False
     TEMPLATE_DEBUG=True
     SECRET_KEY = os.environ["SECRET_KEY"]
     SOCIAL_AUTH_TWITTER_KEY = os.environ["SOCIAL_AUTH_TWITTER_KEY"]
@@ -228,7 +227,7 @@ if mode=="本番":
 
     db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
     DATABASES['default'].update(db_from_env)    
-    django_heroku.settings(locals()) #追加
+    django_heroku.settings(locals(),staticfiles=False) #追加
     
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
