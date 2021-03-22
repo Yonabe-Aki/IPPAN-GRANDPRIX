@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 # mode="ローカルテスト"
 # mode="ローカルテスト2"
-mode="テスト"
-# mode="本番"
+# mode="テスト"
+mode="本番"
 
 import os
 import django_heroku
@@ -202,7 +202,8 @@ if mode=="テスト":
     AWS_STORAGE_BUCKET_NAME=os.environ['AWS_STORAGE_BUCKET_NAME']
 
 if mode=="本番":
-    DEBUG=False
+    # DEBUG=False
+    DEBUG = True
     TEMPLATE_DEBUG=True
     SECRET_KEY = os.environ["SECRET_KEY"]
     SOCIAL_AUTH_TWITTER_KEY = os.environ["SOCIAL_AUTH_TWITTER_KEY"]
