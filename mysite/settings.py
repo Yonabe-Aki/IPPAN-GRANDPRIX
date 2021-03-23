@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 # mode="ローカルテスト"
 # mode="ローカルテスト(DEBUG=False)"
-# mode="デプロイテスト"
-mode="本番"
+mode="デプロイテスト"
+# mode="本番"
 
 import os
 import django_heroku
