@@ -95,13 +95,16 @@ def participate(request):
     page_obj = paginate_queryset(request, competitions, 5)
     user = request.user
     if user.is_authenticated:
-        image_url=twitter_api.get_user_icon(request.user)
-        context = {
-            'competition_list': page_obj.object_list,
-            'page_obj': page_obj,
-            "image_url" : image_url,
-        }
-        return render(request, 'flat/participate.html', context)
+        if UserSocialAuth.objects.get(user=user, provider='twitter'):
+            image_url=twitter_api.get_user_icon(request.user)
+            context = {
+                'competition_list': page_obj.object_list,
+                'page_obj': page_obj,
+                "image_url" : image_url,
+            }
+            return render(request, 'flat/participate.html', context)
+        else:
+            return redirect("logout")
     else:
         context = {
             'competition_list': page_obj.object_list,
