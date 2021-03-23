@@ -44,7 +44,7 @@ def detail(request,competition_id):
 
 @login_required
 def post(request,competition_id):
-    competition=Competition.objects.get(id=competition_id)
+    competition=Competition.objects.order_by("-id").get(id=competition_id)
     competition.population+=1
     competition.save()
     content=request.POST.get("content")
@@ -63,34 +63,7 @@ def create_competition(request):
     new_competition.save()
     return redirect("/")
 
-# def participate(request, url_code):
-#     competitions=Competition.objects.order_by("-id").all
-#     user=request.user
-#     if request.method == 'GET':
-#        page_num = request.GET.get('p', 1)
-#        pagenator = Paginator(
-#            Topic.objects.filter(category__url_code=url_code),
-#            1 # 1ページに表示するオブジェクト数
-#        )
-#        try:
-#            page = pagenator.page(page_num)
-#        except PageNotAnInteger:
-#            page = pagenator.page(1)
-#        except EmptyPage:
-#            page = pagenator.page(pagenator.num_pages)
 
-#        ctx = {
-#            'category': get_object_or_404(Category, url_code=url_code),
-#            'page_obj': page,
-#            'topic_list': page.object_list, # pageでもOK
-#            'is_paginated': page.has_other_pages,
-#        }
-
-#     if user.is_authenticated:
-#         image_url=twitter_api.get_user_icon(request.user)
-#         return render(request,"flat/participate.html",{"competitions":competitions,"user":user,"image_url":image_url},ctx)
-#     else:
-#         return render(request,"flat/participate.html",{"competitions":competitions,"user":user},ctx)
 def paginate_queryset(request, queryset, count):
     """Pageオブジェクトを返す。
 
