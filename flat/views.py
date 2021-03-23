@@ -44,7 +44,7 @@ def detail(request,competition_id):
 
 @login_required
 def post(request,competition_id):
-    competition=Competition.objects.order_by("-id").get(id=competition_id)
+    competition=Competition.objects.get(id=competition_id)
     competition.population+=1
     competition.save()
     content=request.POST.get("content")
@@ -91,7 +91,7 @@ def paginate_queryset(request, queryset, count):
 
 
 def participate(request):
-    competitions = Competition.objects.all()
+    competitions = Competition.objects.order_by("-id").all()
     page_obj = paginate_queryset(request, competitions, 5)
     user = request.user
     if user.is_authenticated:
