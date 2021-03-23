@@ -9,10 +9,10 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-mode="ローカルテスト"
+# mode="ローカルテスト"
 # mode="ローカルテスト(DEBUG=False)"
 # mode="デプロイテスト"
-# mode="本番"
+mode="本番"
 
 import os
 import django_heroku
