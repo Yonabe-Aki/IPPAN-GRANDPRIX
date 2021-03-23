@@ -9,10 +9,10 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-# mode="ローカルテスト"
-# mode="ローカルテスト2"
-# mode="テスト"
-mode="本番"
+mode="ローカルテスト"
+# mode="ローカルテスト(DEBUG=False)"
+# mode="デプロイテスト"
+# mode="本番"
 
 import os
 import django_heroku
@@ -174,7 +174,7 @@ if mode=="ローカルテスト":
     AWS_SECRET_ACCESS_KEY=twitter.AWS_SECRET_ACCESS_KEY
     AWS_STORAGE_BUCKET_NAME=twitter.AWS_STORAGE_BUCKET_NAME
 
-if mode=="ローカルテスト2":
+if mode=="ローカルテスト(DEBUG=False)":
     DEBUG=False
     from .configs import twitter
     SECRET_KEY = twitter.SECRET_KEY
@@ -185,7 +185,7 @@ if mode=="ローカルテスト2":
     AWS_STORAGE_BUCKET_NAME=twitter.AWS_STORAGE_BUCKET_NAME
 
 
-if mode=="テスト":
+if mode=="デプロイテスト":
     DEBUG=True
     try:
         from .local_settings import *
