@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 # mode="ローカルテスト"
 # mode="ローカルテスト(DEBUG=False)"
-# mode="デプロイテスト"
-mode="本番"
+mode="デプロイテスト(DEBUG=True)"
+# mode="本番"
 
 import os
 import django_heroku
@@ -185,7 +185,7 @@ if mode=="ローカルテスト(DEBUG=False)":
     AWS_STORAGE_BUCKET_NAME=twitter.AWS_STORAGE_BUCKET_NAME
 
 
-if mode=="デプロイテスト":
+if mode=="デプロイテスト(DEBUG=True)":
     DEBUG=True
     try:
         from .local_settings import *
