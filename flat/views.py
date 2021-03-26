@@ -36,12 +36,13 @@ def detail(request,competition_id):
 @login_required
 def post(request,competition_id):
     if request.user.is_authenticated:
-        competition=Competition.objects.get(id=competition_id)
+        competition = Competition.objects.get(id=competition_id)
         competition.population+=1
         competition.save()
         content=request.POST.get("content")
         twitter_api.post_twitter(request.user,content,competition_id)
-        return redirect("/")
+        after_post = True
+        return redirect("/",{"after_post":after_post})
     else:
         return redirect("/")
 

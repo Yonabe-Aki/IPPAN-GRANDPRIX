@@ -20,7 +20,7 @@ def post_twitter(user,content,competition_id):
 
     url_text = "https://api.twitter.com/1.1/statuses/update.json"
     twitter = OAuth1Session(CK, CS, AT, AS)
-    params = {'status': content+"\nhttps://omusubi.herokuapp.com/detail/"+str(competition_id)}
+    params = {'status': content+"\nhttps://omusubi.herokuapp.com/detail/"+str(competition_id)+"\n#Onigiri_"+str(competition_id)}
     twitter.post(url_text, params = params)
 
 def get_user_icon(user):

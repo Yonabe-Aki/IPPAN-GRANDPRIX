@@ -1,3 +1,5 @@
+{% extends 'flat/base.html' %}
+{% load static %}
 <head>
     <meta name="twitter:card" content="summary" /> <!--①-->
     <meta name="twitter:site" content="@mani18041601" /> 
@@ -5,10 +7,15 @@
     <meta property="og:title" content="Onigiri" /> <!--④-->
     <meta property="og:description" content="twitter大喜利大会サイト" /> <!--⑤-->
     <meta property="og:image" content="https://manibacket.s3-ap-northeast-1.amazonaws.com/media/onigiri.jpeg"/>  
+    {{ user|json_script:"user" }}
+    <script type="text/javascript" src="{% static 'script.js' %}">
+    </script>
+
 </head>
-{% extends 'flat/base.html' %}
-{% load static %}
+
 {%block content%}
+
+
 
 {%if not user.is_authenticated%}
 <div id="descript">
