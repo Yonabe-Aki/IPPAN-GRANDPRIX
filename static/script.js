@@ -7,6 +7,6 @@ function close_modal_window(id){
 function require_login(){
     alert("ログインしてください")
 }
-
-var after_post = JSON.parse(document.getElementById('user').textContent);
-alert(after_post)
+// function after_post(){
+//     alert("tweetできました")
+// }

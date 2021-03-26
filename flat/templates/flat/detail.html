@@ -26,7 +26,9 @@
     <link href="{% static 'style.css' %}" rel="stylesheet">
     {% endblock %}
     <header>
+        <a href = "twitter.com/{{user}}">
         <img src="{% static "flat/onigiri.png" %}">
+        </a>
         {% if user.is_authenticated %}
         <img id = "twi-icon" src={{image_url}}>  
         {% endif %}
