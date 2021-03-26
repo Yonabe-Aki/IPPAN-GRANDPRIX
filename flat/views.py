@@ -41,8 +41,9 @@ def post(request,competition_id):
         competition.save()
         content=request.POST.get("content")
         twitter_api.post_twitter(request.user,content,competition_id)
-        after_post = True
-        return redirect("/",{"after_post":after_post})
+        # after_post = True
+        # return redirect("/",{"after_post":after_post})
+        return redirect("/")
     else:
         return redirect("/")
 
