@@ -36,17 +36,31 @@
         <div class="theme-space">
         </div>
         <div class="theme">
-            <img class="img" src="{{competition.img.url }}" />
+            <img class="img" src="{{competition.img.url}}" />
             <div class="participants">
                 <span class="far fa-hand-paper">{{competition.population}}</span>
             </div>
         </div>
+        
+        {%block content%%}
+        {%if user.is_authenticated%}
         <form class="post-form" action="/post/{{competition.id}}" method="post">
         {% csrf_token %}
             <textarea name="content" class="post-textarea"></textarea>
             <br>
             <input type="submit" value="tweetする" id="twi-btn"> 
         </form>
+        {%else%}
+        <form class="post-form" action="/post/{{competition.id}}">
+        {% csrf_token %}
+            <textarea name="content" class="post-textarea"></textarea>
+            <br>
+            <input type="button" value="tweetする" id="twi-btn" onclick="require_login()"> 
+        </form>
+        {% endif %}
+
+
+        {% endblock %}
     </main>
 
     <div id="nav-space">

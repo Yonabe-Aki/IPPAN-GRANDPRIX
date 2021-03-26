@@ -14,15 +14,6 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-# def participate(request):
-#     competitions=Competition.objects.order_by("-id").all
-#     user=request.user
-#     if user.is_authenticated:
-#         image_url=twitter_api.get_user_icon(request.user)
-#         return render(request,"flat/participate.html",{"competitions":competitions,"user":user,"image_url":image_url})
-#     else:
-#         return render(request,"flat/participate.html",{"competitions":competitions,"user":user})
-
 def hold(request):
     user = request.user
     if user.is_authenticated:
@@ -37,19 +28,22 @@ def detail(request,competition_id):
     user = request.user
     if user.is_authenticated:
         image_url=twitter_api.get_user_icon(request.user)
-        return render(request,"flat/detail.html",{"image_url":image_url,"competition":competition})
+        return render(request,"flat/detail.html",{"image_url":image_url,"competition":competition,"user":user})
     else:
-        return render(request,"flat/hold.html",{"competition":competition})
+        return render(request,"flat/detail.html",{"competition":competition,"user":user})
 
 
 @login_required
 def post(request,competition_id):
-    competition=Competition.objects.get(id=competition_id)
-    competition.population+=1
-    competition.save()
-    content=request.POST.get("content")
-    twitter_api.post_twitter(request.user,content,competition_id)
-    return redirect("/")
+    if request.user.is_authenticated:
+        competition=Competition.objects.get(id=competition_id)
+        competition.population+=1
+        competition.save()
+        content=request.POST.get("content")
+        twitter_api.post_twitter(request.user,content,competition_id)
+        return redirect("/")
+    else:
+        return redirect("/")
 
 
 
