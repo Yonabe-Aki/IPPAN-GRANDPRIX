@@ -41,11 +41,18 @@ def post(request,competition_id):
         competition.save()
         content=request.POST.get("content")
         twitter_api.post_twitter(request.user,content,competition_id)
-        # after_post = True
-        # return redirect("/",{"after_post":after_post})
-        return redirect("/")
+        return redirect('/', kwargs = {flash_message:"回答がtwitterに投稿されました！"})
+
     else:
         return redirect("/")
+
+
+
+
+
+
+
+
 
 
 
@@ -86,17 +93,19 @@ def paginate_queryset(request, queryset, count):
     return page_obj
 
 
-def participate(request):
+def participate(request,**kwargs):
     competitions = Competition.objects.order_by("-id").all()
     page_obj = paginate_queryset(request, competitions, 5)
     user = request.user
     if user.is_authenticated:
         try:
             image_url=twitter_api.get_user_icon(request.user)
+            flash_message = kwargs[flash_message]
             context = {
                 'competition_list': page_obj.object_list,
                 'page_obj': page_obj,
                 "image_url" : image_url,
+                "flash_message" : flash_message,
             }
             return render(request, 'flat/participate.html', context)
         except:

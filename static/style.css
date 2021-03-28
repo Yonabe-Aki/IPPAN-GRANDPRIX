@@ -130,6 +130,22 @@ main{
 #alert-wrap h1{
     margin-top: 20px;
 }
+#flash-message{
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 10vh;
+    border: solid;
+    margin: auto;
+    background-color: #1ea1f1;
+    color: white;
+    line-height: 10vh;
+    text-align: center;
+    opacity: 70%;
+}
+
 @media screen and (max-width:767px){
     body{
         background-color: #FEFFFE;
@@ -161,6 +177,7 @@ main{
         z-index: 500;
         bottom:0;
     }
+
  
 }
 
