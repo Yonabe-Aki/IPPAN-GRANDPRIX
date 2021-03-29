@@ -9,7 +9,7 @@ from . import twitter_api
 from . import create_img
 import os
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-
+from django.core.exceptions import ObjectDoesNotExist
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -92,7 +92,7 @@ def participate(request):
                    "image_url" : image_url,                  
                 }
                 return render(request, 'flat/participate.html', context)
-        except UserSocialAuth.DoesNotExist:
+        except ObjectDoesNotExist:
             return redirect("logout")
     else:
         context = {
