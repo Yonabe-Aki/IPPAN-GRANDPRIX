@@ -135,7 +135,6 @@ main{
     right: 0;
     left: 0;
     top: 0;
-    width: 50%;
     height: 10vh;
     border: solid;
     margin: auto;
@@ -177,7 +176,9 @@ main{
         z-index: 500;
         bottom:0;
     }
-
+    #flash-message{
+        width: 100%;
+    }
  
 }
 
@@ -222,6 +223,9 @@ main{
         position: fixed;
         z-index: 500;
         bottom:0;
+    }
+    #flash-message{
+        width: 50%;
     }
 
 }

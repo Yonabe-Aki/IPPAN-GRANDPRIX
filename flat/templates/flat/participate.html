@@ -10,10 +10,11 @@
 {% load static %}
 {%block content%}
 
-{% if flash_message %}
+
+
+{% if flash_bool %}
 <div id="flash-message">
     <p>回答がtwitterに投稿されました!</p>
-    <p>{{flash_message}}</p>
 </div> 
 {% endif %}
 

@@ -41,20 +41,9 @@ def post(request,competition_id):
         competition.save()
         content=request.POST.get("content")
         twitter_api.post_twitter(request.user,content,competition_id)
-        return redirect('/', kwargs = {flash_message:"回答がtwitterに投稿されました！"})
-
+        return redirect('/?flash=True')
     else:
         return redirect("/")
-
-
-
-
-
-
-
-
-
-
 
 def create_competition(request):
     theme=request.POST.get("theme")
@@ -68,20 +57,6 @@ def create_competition(request):
 
 
 def paginate_queryset(request, queryset, count):
-    """Pageオブジェクトを返す。
-
-    ページングしたい場合に利用してください。
-
-    countは、1ページに表示する件数です。
-    返却するPgaeオブジェクトは、以下のような感じで使えます。
-
-        {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}">Prev</a>
-        {% endif %}
-
-    また、page_obj.object_list で、count件数分の絞り込まれたquerysetが取得できます。
-
-    """
     paginator = Paginator(queryset, count)
     page = request.GET.get('page')
     try:
@@ -93,21 +68,30 @@ def paginate_queryset(request, queryset, count):
     return page_obj
 
 
-def participate(request,**kwargs):
+def participate(request):
     competitions = Competition.objects.order_by("-id").all()
     page_obj = paginate_queryset(request, competitions, 5)
     user = request.user
+
     if user.is_authenticated:
+        image_url=twitter_api.get_user_icon(request.user)
         try:
-            image_url=twitter_api.get_user_icon(request.user)
-            flash_message = kwargs[flash_message]
-            context = {
-                'competition_list': page_obj.object_list,
-                'page_obj': page_obj,
-                "image_url" : image_url,
-                "flash_message" : flash_message,
-            }
-            return render(request, 'flat/participate.html', context)
+            if 'flash' in request.GET:
+                flash_bool = request.GET['flash'] 
+                context = {
+                   'competition_list': page_obj.object_list,
+                   'page_obj': page_obj,
+                   "image_url" : image_url,  
+                   "flash_bool": flash_bool,          
+                }
+                return render(request, 'flat/participate.html', context)
+            else:
+                context = {
+                   'competition_list': page_obj.object_list,
+                   'page_obj': page_obj,
+                   "image_url" : image_url,                  
+                }
+                return render(request, 'flat/participate.html', context)
         except:
             return redirect("logout")
     else:
