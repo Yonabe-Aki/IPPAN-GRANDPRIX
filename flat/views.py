@@ -92,7 +92,7 @@ def participate(request):
                    "image_url" : image_url,                  
                 }
                 return render(request, 'flat/participate.html', context)
-        except:
+        except DoesNotExist:
             return redirect("logout")
     else:
         context = {
