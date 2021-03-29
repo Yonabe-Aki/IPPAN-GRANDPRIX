@@ -95,11 +95,14 @@ def participate(request):
         except ObjectDoesNotExist:
             return redirect("logout")
     else:
-        context = {
-            'competition_list': page_obj.object_list,
-            'page_obj': page_obj,
-        }
-        return render(request, "flat/participate.html", context)
+        try:
+            context = {
+                'competition_list': page_obj.object_list,
+                'page_obj': page_obj,
+            }
+            return render(request, "flat/participate.html", context)
+        except ObjectDoesNotExist:
+            return redirect("logout")
 
 
 # def get_icon_url(request):
