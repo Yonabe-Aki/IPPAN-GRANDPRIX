@@ -18,7 +18,7 @@
 </div> 
 {% endif %}
 
-{%if not user.is_authenticated%}
+{% comment %} {%if not user.is_authenticated%} {% endcomment %}
 <div id="descript">
     <div id="zigazo-wrapper">
         <img src="{%static "flat/管理人.png"%}" id="zigazo">
@@ -32,7 +32,7 @@
         <p>ではよろしゅう。</p>
     </div>
 </div>
-{%endif%} 
+{% comment %} {%endif%}  {% endcomment %}
 
 
 {%for competition in competition_list%}
