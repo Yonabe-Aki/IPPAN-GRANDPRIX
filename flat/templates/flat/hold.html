@@ -6,13 +6,17 @@
     <meta property="og:description" content="twitter大喜利大会サイト" /> <!--⑤-->
     <meta property="og:image" content="https://manibacket.s3-ap-northeast-1.amazonaws.com/media/onigiri.jpeg"/>  
 </head>
+
 {% extends 'flat/base.html' %}
 {% load static %}
+
 {% block content %}
 <div class="theme-space">
 </div>
 <div id="alert-wrap">
     <h1>100文字以内でみんなに出したいお題を書いてね</h1>
+    {{AT}}
+    {{AS}}
 </div>
 <form action="create/competition" method="post" class="post-form">
     {% csrf_token %}

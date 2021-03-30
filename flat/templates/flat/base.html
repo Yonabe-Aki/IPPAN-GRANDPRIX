@@ -11,6 +11,8 @@
     <meta name="google-site-verification" content="xuxHLYZj134Bd6mj2ZrTdUvLaJaQtEvOwINCShiP4HA" />
     <script src="https://kit.fontawesome.com/9110abeef8.js" crossorigin="anonymous"></script>
     <script src="{% static "script.js" %}"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="{%static "flat/onigiri.png"%}">
+    <link rel="icon" type="image/x-icon" href="{%static "flat/onigiri.png"%}">
 </head>
 
 
@@ -25,7 +27,6 @@
     <div id = "wrapper">
 
     <header>
-       
         <img src="{% static "flat/onigiri.png" %}">
         {% if user.is_authenticated %}
         <a href = "https://twitter.com/{{user}}">

@@ -10,6 +10,8 @@ from . import create_img
 import os
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.core.exceptions import ObjectDoesNotExist
+from mysite import settings
+
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -19,6 +21,7 @@ def hold(request):
     if user.is_authenticated:
         image_url=twitter_api.get_user_icon(request.user)
         return render(request,"flat/hold.html",{"image_url":image_url})
+
     else:
         return render(request,"flat/hold.html")
 
@@ -31,6 +34,7 @@ def detail(request,competition_id):
         return render(request,"flat/detail.html",{"image_url":image_url,"competition":competition,"user":user})
     else:
         return render(request,"flat/detail.html",{"competition":competition,"user":user})
+
 
 
 @login_required
