@@ -145,28 +145,23 @@ main{
     opacity: 70%;
 }
 
-@media screen and (max-width:767px){
+@media screen and (max-width:600px){
     body{
         background-color: #FEFFFE;
     }
-
     #descript{
-        line-height: 25px;
+        display:flex;
     }
-    #zigazo-wrapper{
-        height:100%;
-        float: left;
-    }
+
     #zigazo{
         width:70px;
-        height: 220px;
+        height: 100%;
         margin-right: 15px;
         margin-left: 15px;
     }
-
     .theme img{
         width: 100%;
-        height: 250px;
+        height: 70vw;
     }
     nav{
         width: 100%;
@@ -182,7 +177,7 @@ main{
  
 }
 
-@media screen and (min-width:767px){
+@media screen and (min-width:600px){
     
     body{
         background-color: #F9F9F9;
@@ -198,23 +193,19 @@ main{
 
     #descript{
         display: flex;
-        align-items: center;
-        height:30vh;
-        line-height: 25px;
+        line-height: 20px;
     }
-    #zigazo-wrapper{
-        height:100%;
-        width:20%;
-        float: left;
-    }
+ 
     #zigazo{
-        width:100%;
-        height:100%;
+        width:70px;
+        height: 100%;
+        margin-right: 15px;
+        margin-left: 15px;
     }
 
     .theme img{
         width: 100%;
-        height: 50vh;
+        height: 30vw;
     }
     nav{
         width: 50%;
