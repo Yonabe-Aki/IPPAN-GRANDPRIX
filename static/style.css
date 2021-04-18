@@ -181,7 +181,7 @@ main{
     
     body{
         background-color: #F9F9F9;
-        margin:0 25%;
+        margin:0 calc(50vw - 300px);
         border: solid;
         border-color: #BBBBBB;
         border-width: 2px;
@@ -208,7 +208,7 @@ main{
         height: 30vw;
     }
     nav{
-        width: 50%;
+        width: 600px;
         display:flex;
         height:13vh;
         position: fixed;
