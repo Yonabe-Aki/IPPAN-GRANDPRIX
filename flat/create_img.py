@@ -6,15 +6,17 @@ import io
 from io import BytesIO
 
 def create_img(theme,id):
-    if settings.mode=="テスト" or settings.mode=="本番":
-        font = ImageFont.truetype("/app/.font/ヒラギノ角ゴシック W9.ttc", 60)
-    if settings.mode=="ローカルテスト" or settings.mode=="ローカルテスト２":
-        font = ImageFont.truetype("/Users/imanishiyuujin/onigiri/.font/ヒラギノ角ゴシック W9.ttc", 60)
+    font_size = 30
+    if settings.mode=="デプロイテスト(DEBUG=True)" or settings.mode=="本番":
+        font = ImageFont.truetype("/app/.font/ヒラギノ角ゴシック W9.ttc", font_size)
+    if settings.mode=="ローカルテスト" or settings.mode=="ローカルテスト(DEBUG=False)":
+        font = ImageFont.truetype("/Users/imanishiyuujin/プログラミング/res_Onigiri/.font/ヒラギノ角ゴシック W9.ttc", font_size)
 
     LINES=theme.splitlines()
     LINES_COUNT=len(LINES)
 
-    img = Image.open("media/frame.jpg")
+    # img = Image.open("media/frame.jpg")
+    img = Image.open("media/お題額縁画像.jpg")
     draw = ImageDraw.Draw(img)
     W,H=img.size
     num=1
@@ -23,7 +25,7 @@ def create_img(theme,id):
         w,h=draw.textsize(line_text,font=font)
         h+=5
         x=(W-w)/2
-        y=(H-h*LINES_COUNT)/2+h*(num-1)
+        y=(H-h*LINES_COUNT)/2+h*(num-1) - 25
         coordinate=(x,y)
         draw.text(coordinate , line_text, fill=(0, 0, 0), font=font)
         num+=1

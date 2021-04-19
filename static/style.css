@@ -100,8 +100,8 @@ main{
 }
 .post-textarea{
     font-size: 1.5rem;
-    width: 70%;
-    height: 20vh;
+    /* width: 70%; */
+    /* height: 20vh; */
     margin:0 auto;
 }
 #twi-btn{
