@@ -155,7 +155,7 @@ main{
 
     #zigazo{
         width:70px;
-        height: 100%;
+        height: 200px;
         margin-right: 15px;
         margin-left: 15px;
     }
@@ -195,10 +195,11 @@ main{
         display: flex;
         line-height: 20px;
     }
- 
+    
     #zigazo{
         width:70px;
-        height: 100%;
+        /* height:100%; */
+        height:200px;
         margin-right: 15px;
         margin-left: 15px;
     }

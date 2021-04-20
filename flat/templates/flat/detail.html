@@ -6,14 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Onigiri</title>
+    <title>IPPANグランプリ</title>
     <script src="https://kit.fontawesome.com/9110abeef8.js" crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="{% static 'script.js' %}">
     </script>
     <meta name="twitter:card" content="summary_large_image" /> <!--①-->
     <meta name="twitter:site" content="@mani18041601" /> <!--②-->
-    <meta property="og:url" content="https://omusubi.herokuapp.com/detail/{{competition.id}}" /> 
+    <meta property="og:url" content="https://ippan-grandprix.herokuapp.com/detail/{{competition.id}}" /> 
     <meta property="og:title" content="お題" /> <!--④-->
     <meta property="og:description" content="大喜利" /> <!--⑤-->
     <meta property="og:image" content="https://manibacket.s3.amazonaws.com/media/img_{{competition.id}}.jpg"/>  
@@ -27,7 +27,7 @@
     {% endblock %}
     <header>
         <a href = "twitter.com/{{user}}">
-        <img src="{% static "flat/onigiri.png" %}">
+        <img src="{% static "flat/icon.jpg" %}">
         </a>
         {% if user.is_authenticated %}
         <img id = "twi-icon" src={{image_url}}>  
