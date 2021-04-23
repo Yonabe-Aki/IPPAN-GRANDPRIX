@@ -48,7 +48,7 @@
         {%if user.is_authenticated%}
         <form class="post-form" action="/post/{{competition.id}}" method="post">
         {% csrf_token %}
-            <textarea name="content" class="post-textarea" cols = "22" rows = "8">#Onigiri_{{competition.id}}
+            <textarea name="content" class="post-textarea" cols = "25" rows = "8">#Onigiri_{{competition.id}}
 #大喜利</textarea>
             <br>
             <input type="submit" value="tweetする" id="twi-btn"> 
@@ -56,7 +56,7 @@
         {%else%}
         <form class="post-form" action="/post/{{competition.id}}">
         {% csrf_token %}
-            <textarea name="content" class="post-textarea cols = "22" rows = "8">#Onigiri_{{competition.id}}
+            <textarea name="content" class="post-textarea cols = "25" rows = "8">#Onigiri_{{competition.id}}
 #大喜利</textarea>
             <br>
             <input type="button" value="tweetする" id="twi-btn" onclick="require_login()"> 
